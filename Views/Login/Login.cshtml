@@ -1,0 +1,54 @@
+﻿@{
+    Layout = null;
+    ViewBag.Title = "LoginList";
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>登录</title>
+    <link href="~/Content/signIn.css" rel="stylesheet" type="text/css" />
+    <link href="~/Content/bootstrap.css" rel="stylesheet" type="text/css" />
+</head>
+<body>
+    <div class="bg-container">
+        <div class="login-logo-wrap">
+            <img src="~/Content/images/loginLog.png" />
+            <p class="form-signin-heading">问吧管理中心</p>
+        </div>
+    </div>
+    <div class="login-input-wrapper"></div>
+    <div class="container login-content-wrapper">
+@using (Html.BeginForm("Login", "Login", FormMethod.Post, new { enctype = "multipart/form-data" }))
+{
+        <form class="form-signin">
+            <div class="form-wrap">
+                <label for="inputEmail" class="sr-only"></label>
+                <input type="text" id="inputEmail" name="username" class="form-control" placeholder="账号名" required autofocus>
+            </div>
+            <div class="form-wrap">
+                <label for="inputPassword" class="sr-only"></label>
+                <input type="password" id="inputPassword" name="userpassword" class="form-control" placeholder="密码" required>
+            </div>
+            <div class="drag">
+                <div class="bg"></div>
+                <div class="text" onselectstart="return false;">请拖动滑块解锁</div>
+                <div class="drag-btn">&gt;&gt;</div>
+            </div>
+            <div class="btn-wrapper">
+                <input class="btn btn-lg btn-primary btn-block loginBtn" type='submit' id='test' value='登  录' disabled="disabled"> 
+                
+            </div>
+            
+        </form>
+}
+    </div>
+    <p class="login-copyright">北京泰思咨询有限公司版权所有</p>
+    <script src="~/Scripts/jquery-1.10.2.min.js"></script>
+    <script src="~/Scripts/bootstrap.min.js"></script>
+    <script src="~/Scripts/signIn.js"></script>
+
+</body>
+</html>

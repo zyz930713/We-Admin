@@ -1,0 +1,223 @@
+﻿﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>@ViewBag.Title</title>
+    <link href="~/Content/Site.css" rel="stylesheet" type="text/css" />
+    <link href="~/Content/layui/css/layui.css" rel="stylesheet" type="text/css" />
+    <link href="~/Content/dashboard.css" rel="stylesheet" type="text/css" />
+    <script src="~/Scripts/modernizr-2.6.2.js"></script>
+</head>
+<body>
+   
+    <ul class="layui-nav shared-nav">
+        <li class="fl">
+            <img class="shared-nav-logo" src="~/Content/images/logo2.png" />
+        </li>
+        <li class="layui-nav-item fr shared-nav-item">
+            <a href="javascript:;">@Wenba.BLL.UserLogin.username</a>
+            <dl class="layui-nav-child shared-nav-show">
+                <!-- 二级菜单 -->
+                <dd><a href="javascript:;" id="person-center">个人中心</a></dd>
+                <dd><a href="@Url.Action("ChangePwd", "Personal", new { id = Wenba.BLL.UserLogin.userid })">更改密码</a></dd>
+                <dd><a href="@Url.Action("LogOff","Personal", new { area = (String)null })">注销</a></dd>
+            </dl>
+        </li>
+        <li class="user-img">
+            <img src="@Wenba.BLL.UserLogin.userhead"/>
+        </li>
+    </ul>
+
+    <div class="layui-container" style="width:100%;padding:0">
+        <div class="layui-row">
+            <div class="layui-col-md2">
+                <ul class="layui-nav layui-nav-tree" lay-filter="test">
+                    <!-- 侧边导航: <ul class="layui-nav layui-nav-tree layui-nav-side"> -->
+                    @if (Wenba.BLL.UserLogin.userroles == "A")
+                    {
+                        <li class="layui-nav-item sidebar-click">
+                            <a class="item-user" href="@Url.Action("UsersList","Users", new { area = (String)null })">
+                                人员管理
+                            </a>
+                        </li>
+                        <li class="layui-nav-item" onclick="bgChange()">
+                            <a class="item-project" href="@Url.Action("Index","Projects", new { area = (String)null })">
+                                项目管理
+                            </a>
+                        </li>
+                        <li class="layui-nav-item sidebar-click">
+                            <a class="item-course" href="@Url.Action("CoursesList","Courses", new { area = (String)null })">
+                                课程管理
+                            </a>
+                        </li>
+                        <li class="layui-nav-item sidebar-click">
+                            <a class="item-question" href="@Url.Action("Index","Questions", new { area = (String)null })">
+                                问题管理
+                            </a>
+                        </li>
+                        <li class="layui-nav-item sidebar-click">
+                            <a class="item-note" href="@Url.Action("NotesList","Notes", new { area = (String)null })">
+                                笔记管理
+                            </a>
+                        </li>
+                        <li class="layui-nav-item sidebar-click">
+                            <a class="item-materials" href="@Url.Action("Index","Studymaterials", new { area = (String)null })">
+                                学习资料
+                            </a>
+                        </li>
+                    }
+                    @if (Wenba.BLL.UserLogin.userroles == "M")
+                    {
+                        <li class="layui-nav-item" onclick="bgChange()">
+                            <a class="item-project" href="@Url.Action("Index","Projects", new { area = (String)null })">
+                                项目管理
+                            </a>
+                        </li>
+                        <li class="layui-nav-item sidebar-click">
+                            <a class="item-course" href="@Url.Action("CoursesList","Courses", new { area = (String)null })">
+                                课程管理
+                            </a>
+                        </li>
+                        <li class="layui-nav-item sidebar-click">
+                            <a class="item-question" href="@Url.Action("Index","Questions", new { area = (String)null })">
+                                问题管理
+                            </a>
+                        </li>
+                        <li class="layui-nav-item sidebar-click">
+                            <a class="item-note" href="@Url.Action("NotesList","Notes", new { area = (String)null })">
+                                笔记管理
+                            </a>
+                        </li>
+                        <li class="layui-nav-item sidebar-click">
+                            <a class="item-materials" href="@Url.Action("Index","Studymaterials", new { area = (String)null })">
+                                学习资料
+                            </a>
+                        </li>
+                    }
+                    @if (Wenba.BLL.UserLogin.userroles == "C")
+                    {
+                        <li class="layui-nav-item sidebar-click">
+                            <a class="item-note" href="@Url.Action("NotesList","Notes", new { area = (String)null })">
+                                组织沉淀
+                            </a>
+                        </li>
+                        <li class="layui-nav-item sidebar-click">
+                            <a class="item-materials" href="@Url.Action("Index","Studymaterials", new { area = (String)null })">
+                                学习资料
+                            </a>
+                        </li>
+                    }
+                    @if (Wenba.BLL.UserLogin.userroles == "S" )
+                    {
+                        <li class="layui-nav-item sidebar-click">
+                            <a class="item-note" href="@Url.Action("NotesList","Notes", new { area = (String)null })">
+                                成长足迹
+                            </a>
+                        </li>
+                        <li class="layui-nav-item sidebar-click">
+                            <a class="item-materials" href="">
+                                学习资料
+                            </a>
+                        </li>
+                    }
+
+                </ul>
+            </div>
+            <div class="layui-col-md10 shared-section">
+                @RenderBody()
+            </div>
+        </div>
+    </div>
+    
+    <script src="~/Scripts/jquery-1.10.2.min.js"></script>
+    <script src="~/Content/layui/layui.all.js"></script>
+    <script src="~/Scripts/main.js"></script>
+    <script>
+
+        var items = $(".sidebar-click");
+        for (var i = 0; i < items.length; i++) {
+            $(i).on("click", function () {
+                alert(1);
+                $(i).css("background-color", "#fff")
+            })
+        }
+
+        function deleteStu(id){
+            $.ajax({
+                type: "DELETE",
+                url: '../api/Students/DeleteStudent/'+id,
+                dataType: "json",
+                success: function (data) {
+                    alert("删除成功！");
+                    window.location.reload()
+                }
+            })
+        }
+       
+        //修改密码验证
+        $("#chooseSubBtn").on("click",function(){
+            var oldP = $("#oldPwd").val();
+            var newP = $("#newPwd").val();
+            var newP2 = $("#newPwd2").val();
+
+            if(oldP == ""){
+                alert("请输入原密码！");
+                return false;
+            }else if(newP == ""){
+                alert("请输入新密码！");
+                return false;
+            }else if(newP2 == ""){
+                alert("请再次输入新密码！");
+                return false;
+            }else if(newP2 != newP){
+                alert("两次密码不一致！");
+                return false;
+            }
+        })
+
+
+        //添加问题验证
+        $("#saveBtn").on("click",function(){
+            var proId = $("#ProjectId").val();
+            var corId = $("#CourseId").val();
+            var quesType = $("#QuestionType").val();
+            var quesNum = $(".QuestionNum").val();
+            var quesDes = $(".QuestionDesc").val();
+
+            if(proId == ""){
+                alert("请选择项目！");
+                return false;
+            }else if(corId == ""|| corId == null){
+                alert("请选择课程！");
+                return false;
+            }else if(quesType == ""){
+                alert("请选择类别！");
+                return false;
+            }else if(quesNum == ""){
+                alert("请输入编号！");
+                return false;
+            }else if(quesDes == ""){
+                alert("请输入内容！");
+                return false;
+            }
+        })
+
+        //添加手机号码验证
+        $("#managerAdd").on("click", function () {
+            var phone = $("#Mobile").val();
+            if (phone == "")
+            {
+                alert("手机号码不能为空！");
+                return false;
+            }
+            else if (!(/^1[34578]\d{9}$/.test(phone))) {
+                alert("手机号码不合法！请重填");
+                return false;
+            }
+        })
+    </script>
+</body>
+
+
+</html>

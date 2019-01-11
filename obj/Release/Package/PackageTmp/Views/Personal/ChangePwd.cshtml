@@ -1,0 +1,56 @@
+﻿@model Wenba.Models.User
+
+@{
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+
+
+
+<body>
+    @using (Html.BeginForm())
+    {
+        @Html.AntiForgeryToken()
+        
+        <div class="form-horizontal layui-form">
+            <h4 style="font-size:18px;color:#333;font-weight:600">修改密码</h4>
+            <hr />
+            @*@Html.ValidationSummary(true, "", new { @class = "text-danger" })*@
+            @Html.HiddenFor(model => model.id) 
+           
+            <div class="layui-form-item">
+                <label class="">请输入原密码：</label>
+                <div class="layui-input-block" style="margin:0">
+                    @*<input id="Password" class="layui-input" name="oldPwd" type="text" />*@
+                    @*@Html.EditorFor(model => model.Password ,new { htmlAttributes = new { @class = "form-control"} })*@
+                    @Html.Editor("oldPwd", new { htmlAttributes = new { @class = "form-control layui-input" } })
+                    @*@Html.ValidationMessageFor(model => model.Password, "", new { @class = "text-danger" })*@
+                </div>
+            </div>
+
+            <div class="layui-form-item">
+                <label class="" >请输入新密码：</label>
+                <div class="layui-input-block" style="margin:0">
+                   @Html.Editor("newPwd", new { htmlAttributes = new { @class = "form-control layui-input" } })
+                </div>
+            </div>
+
+            <div class="layui-form-item">
+                <label class="">请再次输入新密码：</label>
+                <div class="layui-input-block" style="margin:0">
+                   @Html.Editor("newPwd2", new { htmlAttributes = new { @class = "form-control layui-input" } })
+                </div>
+            </div>
+           
+            <div class="layui-form-item">
+                
+                <div class="layui-input-block inline-show" style="margin:0">
+                    <input id="chooseSubBtn" type="submit" value="提交" class="layui-btn layui-btn-normal" />
+                </div>
+            </div>
+    
+           
+        </div>
+    }
+</body>
+

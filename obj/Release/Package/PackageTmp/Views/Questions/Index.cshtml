@@ -1,0 +1,211 @@
+﻿@model IPagedList<Wenba.ViewModels.CompositeQuestion>
+
+@using PagedList.Mvc;
+@using PagedList;
+
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+    //int rownum = 1;
+    //if (Model.IsFirstPage)
+    //{
+    //    rownum = 1;
+    //}
+    //else
+    //{
+    //    rownum = Model.PageSize * (Model.PageNumber - 1) + 1;
+    //}
+
+    var CourseId = ViewData["CourseId"];
+    var ProjectId = ViewData["ProjectId"];
+    var QuestionDesc = ViewData["QuestionDesc"];
+}
+<link href="~/Content/PagedList.css" rel="stylesheet" />
+
+<p><h2>问题列表</h2></p>
+
+<div class="User-manager-form layui-col-md12">
+    <form action="~/Questions/Index" method="post" name="form1" id="form1">
+        <div class="layui-form-item inline-show item-filter">
+            <label class="layui-form-label">项目名称</label>
+            <div class="layui-input-block">
+
+                @Html.DropDownList("ProjectId", ViewData["ProjectList"] as List<SelectListItem>, "所有项目", new { @onchange = "GetProjectId(this.value)" })
+            </div>
+        </div>
+
+        <div class="layui-form-item inline-show item-filter">
+            <label class="layui-form-label">课程名称</label>
+            <div class="layui-input-block">
+
+                @*@Html.DropDownList("CourseId", ViewData["CourseList"] as List<SelectListItem>, "所有课程")*@
+                @Html.DropDownList("CourseId", new SelectList(Enumerable.Empty<SelectListItem>(), "courseId", "courseName"))
+
+            </div>
+        </div>
+
+        <div class="layui-form-item inline-show item-filter">
+            <label class="layui-form-label">问题内容</label>
+            <div class="layui-input-block">
+                <input type="text" name="QuestionDesc" autocomplete="off" class="layui-input" value="@QuestionDesc">
+            </div>
+        </div>
+        <div class="layui-form-item inline-show item-filter">
+            <div class="layui-input-block">
+                <input class="layui-btn" type="submit" value="搜索" />
+            </div>
+        </div>
+    </form>
+</div>
+
+
+@using (Html.BeginForm("Release", "Questions", FormMethod.Post))
+{
+    <div>
+
+        <table class="table-hover gridtable">
+
+            <tr>
+                <th style="width:5%">
+                    <input type="button" value="全选" class="layui-btn layui-btn-primary" onclick="ChooseAll()" />
+                </th>
+                @*<th>
+                    序号
+                </th>*@
+                <th>
+                    编号
+                </th>
+                <th>
+                    项目名称
+                </th>
+                <th>
+                    课程名称
+                </th>
+                <th>
+                    发布类别
+                </th>
+                <th>
+                    内容
+                </th>
+
+                <th>操作</th>
+            </tr>
+
+            @{
+
+                foreach (var item in Model)
+                {
+                    <tr>
+                        <td style="text-align:center">
+                            @if (item.Question.Status.Contains("C"))
+                            {
+                                <input type="checkbox" id="SelectQuestions" name="SelectQuestions" value="@item.Question.id" />
+                            }
+                        </td>
+                        @*<td>@rownum.ToString("00")</td>*@
+
+                        <td>@Html.DisplayFor(modelItem => item.Question.QuestionNum)</td>
+
+                        <td>
+                            @Html.DisplayFor(modelItem => item.Project.ProjectName)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.Course.CourseName)
+                        </td>
+                        <td>
+                            @if (item.Question.QuestionType.Contains("Q"))
+                            {
+                                @("问题")
+                            }
+                            @if (item.Question.QuestionType.Contains("N"))
+                            {
+                                @("通知")
+                            }
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.Question.QuestionDesc)
+                        </td>
+
+                        <td>
+                            @Html.ActionLink("详情", "Details", new { id = item.Question.id })
+
+                            @if (item.Question.Status.Contains("C"))
+                            {
+
+                                @Html.ActionLink("编辑", "Edit", new { id = item.Question.id })
+                                @Html.ActionLink("删除", "Delete", new { id = item.Question.id })
+                            }
+
+                        </td>
+
+                    </tr>
+                    //rownum++;
+
+                }
+            }
+
+
+        </table>
+    </div>
+    <h3 style="margin-bottom:12px">
+        <input type="button" id="questionChoose" value="发布" class="layui-btn"/>
+        <input type="submit" id="questionSend" value="发布" class="layui-btn" onclick="GetId()" style="display:none;margin-left:20px" />
+        <input type="hidden" id="tempString" name="tempString" />
+    </h3>
+    <div class="layui-form-item inline-show">
+        <div class="layui-btn layui-btn-normal">@Html.ActionLink("添加", "Create")</div>
+    </div>
+                }
+<div class="shared-pageList">
+    每页 @Model.PageSize 条记录，共 @Model.PageCount 页，当前第 @Model.PageNumber 页
+    @Html.PagedListPager(Model, page => Url.Action("Index", new { page, ProjectId, QuestionDesc }))
+</div>
+
+
+
+<script>
+    //获取项目 再给子下拉框赋值
+    function GetProjectId(id) {
+        if (id == null) {
+            return;
+        }
+        else {
+            $("#CourseId").empty();
+            $.ajax({
+                url: "/Questions/BindCourse/" + id,
+                type: "post",
+
+                success: function (data) {
+
+                    $(data).each(function () {
+                        $("#CourseId").append("<option value='" + this.Value + "'>" + this.Text + "</option>")
+                    })
+                }
+            })
+        }
+    }
+
+
+    function GetId() {
+        var bb = "";
+        var temp = "";
+        var a = document.getElementsByName("SelectQuestions");
+        for (var i = 0; i < a.length; i++) {
+            if (a[i].checked) {
+                temp = a[i].value;
+                bb = bb + "," + temp;
+            }
+        }
+        document.getElementById("tempString").value = bb
+        .substring(1, bb.length);
+    }
+
+    function ChooseAll()
+    {
+        var a = document.getElementsByName("SelectQuestions");
+        for (var i = 0; i < a.length; i++) {
+            a[i].checked = true;
+        }
+    }
+
+</script>

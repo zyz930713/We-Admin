@@ -1,0 +1,45 @@
+﻿@model Wenba.Controllers.NotesController.viewModel
+@{
+    ViewBag.Title = "NotesDetail";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title></title>
+</head>
+<body class="shared-detail">
+    <table class="table-hover gridtable">
+        <tr>
+            <th>项目名称</th>
+            <td>
+               @Html.DisplayFor(model => model.CourseName)
+            </td>
+        </tr>
+        <tr>
+            <th>课程名称</th>
+            <td>@Html.DisplayFor(model => model.CourseName)</td>
+        </tr>
+        <tr>
+            <th>姓名</th>
+            <td>@Html.DisplayFor(model => model.UserName)</td>
+        </tr>
+        <tr>
+            <th>内容</th>
+            <td>@Html.DisplayFor(model => model.NoteContent)</td>
+        </tr>
+        <tr>
+            <th>发布时间</th>
+            <td>
+                @Html.DisplayFor(model => model.ReleaseTime)
+            </td>
+        </tr>
+    </table>
+    @Html.ActionLink("返回列表", "NotesList")
+</body>
+</html>
+
+

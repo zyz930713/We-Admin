@@ -1,0 +1,81 @@
+﻿@model Wenba.Controllers.UsersController.Studentlist
+@{
+    ViewBag.Title = "StudentDetail";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title></title>
+</head>
+<body class="shared-detail">
+
+    <table>
+        <tr>
+            <th>用户头像</th>
+            <td>
+                <img src="@Html.DisplayFor(model=>model.HeadImage)" alt="" />
+            </td>
+        </tr>
+        <tr>
+            <th>用户姓名</th>
+            <td>@Html.DisplayFor(model => model.StudentName)</td>
+        </tr>
+        <tr>
+            <th>学生编号</th>
+            <td>@Html.DisplayFor(model => model.StudentNum)</td>
+        </tr>
+        <tr>
+            <th>用户密码</th>
+            <td>@Html.DisplayFor(model => model.Password)</td>
+        </tr>
+        <tr>
+            <th>用户性别</th>
+            <td>
+                @Html.DisplayFor(model => model.Gender)
+            </td>
+        </tr>
+        <tr>
+            <th>手机号码</th>
+            <td>@Html.DisplayFor(model => model.Mobile)</td>
+        </tr>
+        <tr>
+            <th>出生日期</th>
+            <td>@Html.DisplayFor(model => model.Birthday)</td>
+        </tr>
+        <tr>
+            <th>毕业学校</th>
+            <td>@Html.DisplayFor(model => model.Collegue)</td>
+        </tr>
+        <tr>
+            <th>所属国籍</th>
+            <td>@Html.DisplayFor(model => model.Nationality)</td>
+        </tr>
+        <tr>
+            <th>项目名称</th>
+            <td>@Html.DisplayFor(model => model.ProjectName)</td>
+        </tr>
+        <tr>
+            <th>备注</th>
+            <td>
+                <textarea id="Text1" name="Comments" type="text" value="@Html.DisplayFor(model=>model.Comments)" readonly></textarea>
+            </td>
+        </tr>
+        <tr>
+            <th>添加时间</th>
+            <td>@Html.DisplayFor(model => model.StartDate)</td>
+        </tr>
+
+    </table>
+    <div>
+        @Html.ActionLink("编辑", "StudentEdit", new { id = Model.StudentId })
+        @Html.ActionLink("返回列表", "UsersList")
+    </div>
+    
+</body>
+</html>
+
+

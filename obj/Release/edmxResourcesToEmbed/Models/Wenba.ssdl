@@ -1,0 +1,318 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="WenbaDBModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+  <EntityType Name="Collections">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="UserId" Type="int" />
+    <Property Name="NoteId" Type="int" />
+    <Property Name="CommentId" Type="int" />
+    <Property Name="CreationDate" Type="datetime" />
+    <Property Name="CreatedBy" Type="int" />
+    <Property Name="LastUpdateDate" Type="datetime" />
+    <Property Name="LastUpdatedBy" Type="int" />
+  </EntityType>
+  <EntityType Name="Comments">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="NoteId" Type="int" Nullable="false" />
+    <Property Name="Comments" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="LikeCount" Type="int" />
+    <Property Name="PublicFlag" Type="char" MaxLength="1" Nullable="false" />
+    <Property Name="CommentedBy" Type="int" Nullable="false" />
+    <Property Name="CommentedType" Type="char" MaxLength="1" Nullable="false" />
+    <Property Name="Attribute1" Type="nvarchar" MaxLength="50" />
+    <Property Name="Attribute2" Type="nvarchar" MaxLength="50" />
+    <Property Name="Attribute3" Type="nvarchar" MaxLength="50" />
+    <Property Name="Attribute4" Type="nvarchar" MaxLength="50" />
+    <Property Name="Attribute5" Type="nvarchar" MaxLength="50" />
+    <Property Name="Attribute6" Type="nvarchar" MaxLength="50" />
+    <Property Name="Attribute7" Type="nvarchar" MaxLength="50" />
+    <Property Name="Attribute8" Type="nvarchar" MaxLength="50" />
+    <Property Name="Attribute9" Type="nvarchar" MaxLength="50" />
+    <Property Name="Attribute10" Type="nvarchar" MaxLength="50" />
+    <Property Name="CreatedBy" Type="int" Nullable="false" />
+    <Property Name="CreationDate" Type="datetime" Nullable="false" />
+    <Property Name="LastUpdateDate" Type="datetime" Nullable="false" />
+    <Property Name="LastUpdatedBy" Type="int" Nullable="false" />
+  </EntityType>
+  <EntityType Name="Courses">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="ProjectId" Type="int" Nullable="false" />
+    <Property Name="CourseName" Type="nvarchar" MaxLength="50" Nullable="false" />
+    <Property Name="CourseNum" Type="nvarchar" MaxLength="50" />
+    <Property Name="CourseDesc" Type="nvarchar" MaxLength="500" />
+    <Property Name="ActiveFlag" Type="char" MaxLength="1" Nullable="false" />
+    <Property Name="TeacherId" Type="int" Nullable="false" />
+    <Property Name="EndDate" Type="datetime" />
+    <Property Name="StartDate" Type="datetime" />
+    <Property Name="Status" Type="char" MaxLength="10" />
+    <Property Name="Site" Type="nvarchar" MaxLength="100" />
+    <Property Name="Comments" Type="nvarchar" MaxLength="20" />
+    <Property Name="Attribute1" Type="nvarchar" MaxLength="50" />
+    <Property Name="Attribute2" Type="nvarchar" MaxLength="50" />
+    <Property Name="Attribute3" Type="nvarchar" MaxLength="50" />
+    <Property Name="Attribute4" Type="nvarchar" MaxLength="50" />
+    <Property Name="Attribute5" Type="varchar" MaxLength="50" />
+    <Property Name="Attribute6" Type="nvarchar" MaxLength="50" />
+    <Property Name="Attribute7" Type="nvarchar" MaxLength="50" />
+    <Property Name="Attribute8" Type="nvarchar" MaxLength="50" />
+    <Property Name="Attribute9" Type="nvarchar" MaxLength="50" />
+    <Property Name="Attribute10" Type="varchar" MaxLength="50" />
+    <Property Name="CreatedBy" Type="int" Nullable="false" />
+    <Property Name="CreationDate" Type="datetime" Nullable="false" />
+    <Property Name="LastUpdatedBy" Type="int" Nullable="false" />
+    <Property Name="LastUpdatedate" Type="datetime" Nullable="false" />
+  </EntityType>
+  <EntityType Name="Dictionaries">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="TYPE" Type="varchar" MaxLength="50" Nullable="false" />
+    <Property Name="CODE" Type="varchar" MaxLength="50" Nullable="false" />
+    <Property Name="VALUE" Type="nvarchar" MaxLength="50" Nullable="false" />
+    <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Enabled" Type="char" MaxLength="1" />
+    <Property Name="CreatedBy" Type="int" />
+    <Property Name="CreationDate" Type="datetime" />
+    <Property Name="LastUpdateDate" Type="datetime" />
+    <Property Name="LastUpdatedBy" Type="int" />
+  </EntityType>
+  <EntityType Name="Labels">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="LabelType" Type="char" MaxLength="10" Nullable="false" />
+    <Property Name="Label" Type="nvarchar" MaxLength="10" Nullable="false" />
+    <Property Name="Attribute1" Type="nvarchar" MaxLength="50" />
+    <Property Name="Attribute2" Type="nvarchar" MaxLength="50" />
+    <Property Name="Attribute3" Type="nvarchar" MaxLength="50" />
+    <Property Name="Attribute4" Type="nvarchar" MaxLength="50" />
+    <Property Name="Attribute5" Type="nvarchar" MaxLength="50" />
+    <Property Name="Attribute6" Type="nvarchar" MaxLength="50" />
+    <Property Name="Attribute7" Type="nvarchar" MaxLength="50" />
+    <Property Name="Attribute8" Type="nvarchar" MaxLength="50" />
+    <Property Name="Attribute9" Type="nvarchar" MaxLength="50" />
+    <Property Name="Attribute10" Type="nvarchar" MaxLength="50" />
+    <Property Name="CreatedBy" Type="int" Nullable="false" />
+    <Property Name="CreationDate" Type="datetime" Nullable="false" />
+    <Property Name="LastUpdateDate" Type="datetime" Nullable="false" />
+    <Property Name="LastUpdatedBy" Type="int" Nullable="false" />
+  </EntityType>
+  <EntityType Name="Managers">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="ManagerName" Type="nvarchar" MaxLength="15" Nullable="false" />
+    <Property Name="ManagerNum" Type="varchar" MaxLength="15" />
+    <Property Name="Gender" Type="varchar" MaxLength="1" />
+    <Property Name="Birthday" Type="date" />
+    <Property Name="HireDate" Type="date" />
+    <Property Name="ActiveFlag" Type="char" MaxLength="1" Nullable="false" />
+    <Property Name="Mobile" Type="varchar" MaxLength="15" Nullable="false" />
+    <Property Name="OpenId" Type="varchar" MaxLength="120" />
+    <Property Name="ManagerType" Type="char" MaxLength="1" Nullable="false" />
+    <Property Name="HeadImage" Type="nvarchar" MaxLength="50" />
+    <Property Name="Comments" Type="nvarchar" MaxLength="50" />
+    <Property Name="Attribute1" Type="nvarchar" MaxLength="50" />
+    <Property Name="Attribute2" Type="nvarchar" MaxLength="50" />
+    <Property Name="Attribute3" Type="nvarchar" MaxLength="50" />
+    <Property Name="Attribute4" Type="nvarchar" MaxLength="50" />
+    <Property Name="Attribute5" Type="nvarchar" MaxLength="50" />
+    <Property Name="Attribute6" Type="nvarchar" MaxLength="50" />
+    <Property Name="Attribute7" Type="nvarchar" MaxLength="50" />
+    <Property Name="Attribute8" Type="nvarchar" MaxLength="50" />
+    <Property Name="Attribute9" Type="nvarchar" MaxLength="50" />
+    <Property Name="Attribute10" Type="nvarchar" MaxLength="50" />
+    <Property Name="CreatedBy" Type="int" Nullable="false" />
+    <Property Name="CreationDate" Type="datetime" Nullable="false" />
+    <Property Name="LastUpdatedBy" Type="int" Nullable="false" />
+    <Property Name="LastUpdateDate" Type="datetime" Nullable="false" />
+  </EntityType>
+  <EntityType Name="Notes">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="UserId" Type="int" Nullable="false" />
+    <Property Name="CourseId" Type="int" />
+    <Property Name="LikeNum" Type="int" />
+    <Property Name="QuestionId" Type="int" />
+    <Property Name="Notes" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="PublicFlag" Type="char" MaxLength="1" Nullable="false" />
+    <Property Name="Attribute1" Type="nvarchar" MaxLength="50" />
+    <Property Name="Attribute2" Type="nvarchar" MaxLength="50" />
+    <Property Name="Attribute3" Type="nvarchar" MaxLength="50" />
+    <Property Name="Attribute4" Type="nvarchar" MaxLength="50" />
+    <Property Name="Attribute5" Type="nvarchar" MaxLength="50" />
+    <Property Name="Attribute6" Type="nvarchar" MaxLength="50" />
+    <Property Name="Attribute7" Type="nvarchar" MaxLength="50" />
+    <Property Name="Attribute8" Type="nvarchar" MaxLength="50" />
+    <Property Name="Attribute9" Type="nvarchar" MaxLength="50" />
+    <Property Name="Attribute10" Type="nvarchar" MaxLength="50" />
+    <Property Name="CreatedBy" Type="int" Nullable="false" />
+    <Property Name="CreationDate" Type="datetime" Nullable="false" />
+    <Property Name="LastUpdateDate" Type="datetime" Nullable="false" />
+    <Property Name="LastUpdatedBy" Type="int" Nullable="false" />
+  </EntityType>
+  <EntityType Name="Projects">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="ProjectName" Type="nvarchar" MaxLength="50" Nullable="false" />
+    <Property Name="ProjectNum" Type="nvarchar" MaxLength="50" Nullable="false" />
+    <Property Name="StartDate" Type="datetime" Nullable="false" />
+    <Property Name="CustomerName" Type="nvarchar" MaxLength="100" />
+    <Property Name="EndDate" Type="datetime" />
+    <Property Name="ManagerId" Type="int" Nullable="false" />
+    <Property Name="CustManagerId" Type="int" Nullable="false" />
+    <Property Name="QRCode" Type="varchar" MaxLength="100" />
+    <Property Name="Status" Type="nvarchar" MaxLength="10" Nullable="false" />
+    <Property Name="Comments" Type="nvarchar" MaxLength="50" />
+    <Property Name="Attribute1" Type="nvarchar" MaxLength="50" />
+    <Property Name="Attribute2" Type="nvarchar" MaxLength="50" />
+    <Property Name="Attribute3" Type="varchar" MaxLength="50" />
+    <Property Name="Attribute4" Type="nvarchar" MaxLength="50" />
+    <Property Name="Attribute5" Type="nvarchar" MaxLength="50" />
+    <Property Name="Attribute6" Type="nvarchar" MaxLength="50" />
+    <Property Name="Attribute7" Type="nvarchar" MaxLength="50" />
+    <Property Name="Attribute8" Type="varchar" MaxLength="50" />
+    <Property Name="Attribute9" Type="nvarchar" MaxLength="50" />
+    <Property Name="Attribute10" Type="nvarchar" MaxLength="50" />
+    <Property Name="CreatedBy" Type="int" Nullable="false" />
+    <Property Name="CreationDate" Type="datetime" Nullable="false" />
+    <Property Name="LastUpdatedBy" Type="int" Nullable="false" />
+    <Property Name="LastUpdateDate" Type="datetime" Nullable="false" />
+  </EntityType>
+  <EntityType Name="Questions">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="QuestionTitle" Type="nvarchar" MaxLength="100" />
+    <Property Name="QuestionDesc" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="QuestionType" Type="varchar" MaxLength="50" Nullable="false" />
+    <Property Name="QuestionNum" Type="varchar" MaxLength="3" Nullable="false" />
+    <Property Name="CourseId" Type="int" Nullable="false" />
+    <Property Name="Comments" Type="nvarchar" MaxLength="50" />
+    <Property Name="CreatedBy" Type="int" Nullable="false" />
+    <Property Name="CreationDate" Type="datetime" Nullable="false" />
+    <Property Name="LastUpdateDate" Type="datetime" Nullable="false" />
+    <Property Name="LastUpdatedBy" Type="int" Nullable="false" />
+    <Property Name="Attribute1" Type="nvarchar" MaxLength="50" />
+    <Property Name="Attribute2" Type="nvarchar" MaxLength="50" />
+    <Property Name="Attribute3" Type="nvarchar" MaxLength="50" />
+    <Property Name="Attribute4" Type="nvarchar" MaxLength="50" />
+    <Property Name="Attribute5" Type="nvarchar" MaxLength="50" />
+    <Property Name="Attribute6" Type="nvarchar" MaxLength="50" />
+    <Property Name="Attribute7" Type="nvarchar" MaxLength="50" />
+    <Property Name="Attribute8" Type="nvarchar" MaxLength="50" />
+    <Property Name="Attribute9" Type="nvarchar" MaxLength="50" />
+    <Property Name="Attribute10" Type="nvarchar" MaxLength="50" />
+    <Property Name="Status" Type="varchar" MaxLength="10" />
+  </EntityType>
+  <EntityType Name="StudentAssgins">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="StudentId" Type="int" Nullable="false" />
+    <Property Name="ActiveFlag" Type="char" MaxLength="1" />
+    <Property Name="ProjectId" Type="int" Nullable="false" />
+    <Property Name="Attribute1" Type="nvarchar" MaxLength="50" />
+    <Property Name="Attribute2" Type="nvarchar" MaxLength="50" />
+    <Property Name="Attribute3" Type="nvarchar" MaxLength="50" />
+    <Property Name="Attribute4" Type="nvarchar" MaxLength="50" />
+    <Property Name="Attribute5" Type="nvarchar" MaxLength="50" />
+    <Property Name="Attribute6" Type="nvarchar" MaxLength="50" />
+    <Property Name="Attribute7" Type="nvarchar" MaxLength="50" />
+    <Property Name="Attribute8" Type="nvarchar" MaxLength="50" />
+    <Property Name="Attribute9" Type="nvarchar" MaxLength="50" />
+    <Property Name="Attribute10" Type="nvarchar" MaxLength="50" />
+    <Property Name="CreatedBy" Type="int" Nullable="false" />
+    <Property Name="CreationDate" Type="datetime" Nullable="false" />
+    <Property Name="LastUpdateDate" Type="datetime" Nullable="false" />
+    <Property Name="LastUpdatedBy" Type="int" Nullable="false" />
+  </EntityType>
+  <EntityType Name="Students">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="StudentName" Type="nvarchar" MaxLength="50" Nullable="false" />
+    <Property Name="StudentNum" Type="varchar" MaxLength="15" />
+    <Property Name="Gender" Type="varchar" MaxLength="1" />
+    <Property Name="Birthday" Type="date" />
+    <Property Name="Collegue" Type="nvarchar" MaxLength="50" />
+    <Property Name="Nationality" Type="nvarchar" MaxLength="15" />
+    <Property Name="ActiveFlag" Type="char" MaxLength="1" Nullable="false" />
+    <Property Name="HeadImage" Type="nvarchar" MaxLength="100" />
+    <Property Name="Mobile" Type="varchar" MaxLength="15" Nullable="false" />
+    <Property Name="OpenId" Type="varchar" MaxLength="120" />
+    <Property Name="Comments" Type="nvarchar" MaxLength="50" />
+    <Property Name="Attribute1" Type="nvarchar" MaxLength="50" />
+    <Property Name="Attribute2" Type="nvarchar" MaxLength="50" />
+    <Property Name="Attribute3" Type="nvarchar" MaxLength="50" />
+    <Property Name="Attribute4" Type="nvarchar" MaxLength="50" />
+    <Property Name="Attribute5" Type="nvarchar" MaxLength="50" />
+    <Property Name="Attribute6" Type="nvarchar" MaxLength="50" />
+    <Property Name="Attribute7" Type="varchar" MaxLength="50" />
+    <Property Name="Attribute8" Type="nvarchar" MaxLength="50" />
+    <Property Name="Attribute9" Type="nvarchar" MaxLength="50" />
+    <Property Name="Attribute10" Type="nvarchar" MaxLength="50" />
+    <Property Name="CreatedBy" Type="int" Nullable="false" />
+    <Property Name="CreationDate" Type="datetime" Nullable="false" />
+    <Property Name="LastUpdatedBy" Type="int" />
+    <Property Name="LastUpdateDate" Type="datetime" />
+  </EntityType>
+  <EntityType Name="Users">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="UserName" Type="varchar" MaxLength="15" Nullable="false" />
+    <Property Name="Comments" Type="nvarchar" MaxLength="50" />
+    <Property Name="Password" Type="varchar" MaxLength="30" Nullable="false" />
+    <Property Name="StartDate" Type="datetime" Nullable="false" />
+    <Property Name="EndDate" Type="datetime" />
+    <Property Name="Role" Type="char" MaxLength="1" Nullable="false" />
+    <Property Name="PersonId" Type="int" Nullable="false" />
+    <Property Name="CreatedBy" Type="int" Nullable="false" />
+    <Property Name="CreationDate" Type="datetime" Nullable="false" />
+    <Property Name="LastUpdateDate" Type="datetime" Nullable="false" />
+    <Property Name="LastUpdatedBy" Type="int" Nullable="false" />
+    <Property Name="Attribute1" Type="nvarchar" MaxLength="50" />
+    <Property Name="Attribute2" Type="nvarchar" MaxLength="50" />
+    <Property Name="Attribute3" Type="nvarchar" MaxLength="50" />
+    <Property Name="Attribute4" Type="nvarchar" MaxLength="50" />
+    <Property Name="Attribute5" Type="nvarchar" MaxLength="50" />
+    <Property Name="Attribute6" Type="nvarchar" MaxLength="50" />
+    <Property Name="Attribute7" Type="nvarchar" MaxLength="50" />
+    <Property Name="Attribute8" Type="nvarchar" MaxLength="50" />
+    <Property Name="Attribute9" Type="nvarchar" MaxLength="50" />
+    <Property Name="Attribute10" Type="nvarchar" MaxLength="50" />
+  </EntityType>
+  <EntityContainer Name="WenbaDBModelStoreContainer">
+    <EntitySet Name="Collections" EntityType="Self.Collections" Schema="wenxue" store:Type="Tables" />
+    <EntitySet Name="Comments" EntityType="Self.Comments" Schema="wenxue" store:Type="Tables" />
+    <EntitySet Name="Courses" EntityType="Self.Courses" Schema="wenxue" store:Type="Tables" />
+    <EntitySet Name="Dictionaries" EntityType="Self.Dictionaries" Schema="wenxue" store:Type="Tables" />
+    <EntitySet Name="Labels" EntityType="Self.Labels" Schema="wenxue" store:Type="Tables" />
+    <EntitySet Name="Managers" EntityType="Self.Managers" Schema="wenxue" store:Type="Tables" />
+    <EntitySet Name="Notes" EntityType="Self.Notes" Schema="wenxue" store:Type="Tables" />
+    <EntitySet Name="Projects" EntityType="Self.Projects" Schema="wenxue" store:Type="Tables" />
+    <EntitySet Name="Questions" EntityType="Self.Questions" Schema="wenxue" store:Type="Tables" />
+    <EntitySet Name="StudentAssgins" EntityType="Self.StudentAssgins" Schema="wenxue" store:Type="Tables" />
+    <EntitySet Name="Students" EntityType="Self.Students" Schema="wenxue" store:Type="Tables" />
+    <EntitySet Name="Users" EntityType="Self.Users" Schema="wenxue" store:Type="Tables" />
+  </EntityContainer>
+</Schema>

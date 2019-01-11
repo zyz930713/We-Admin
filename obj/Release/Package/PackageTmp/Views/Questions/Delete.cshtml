@@ -1,0 +1,24 @@
+﻿@model Wenba.Models.Question
+
+@{
+    ViewBag.Title = "Delete";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+
+
+<h3>确定删除该条问题吗</h3>
+<div>
+    <hr />
+    <h3>问题内容:@Html.DisplayFor(model => model.QuestionDesc)</h3>
+    
+
+    @using (Html.BeginForm()) {
+        @Html.AntiForgeryToken()
+
+        <div class="form-actions no-color" style="margin-top:20px">
+            <input type="submit" value="Delete" class="layui-btn layui-btn-danger" /> |
+            @Html.ActionLink("返回列表", "Index")
+        </div>
+    }
+</div>

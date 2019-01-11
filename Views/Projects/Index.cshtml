@@ -1,0 +1,149 @@
+﻿@{
+    Layout = "~/Views/Shared/_Layout.cshtml";
+    var managerId = ViewData["managerId"];
+    var StartDate = ViewData["StartDate"];
+    var EndDate = ViewData["EndDate"];
+    var projStatus = ViewData["projStatus"];
+    int rownum = 1;
+    if (Model.IsFirstPage)
+    {
+        rownum = 1;
+    }
+    else
+    {
+        rownum = Model.PageSize * (Model.PageNumber - 1) + 1;
+    }
+}
+@model IPagedList<Wenba.ViewModels.CompositeProject>
+@using PagedList.Mvc;
+@using PagedList;
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title></title>
+    <link href="~/Content/PagedList.css" rel="stylesheet" />
+</head>
+<body>
+    <div class="projectManage-wrap">
+        <div class="item-module">
+            <form class="layui-form" action="~/Projects/Index" method="post" name="form1" id="form1">
+                <div class="item-title">
+                    <img src="~/Content/images/icon_project2.png" />
+                    <span>项目管理</span>
+                </div>
+                <div>
+                    <div class="layui-form-item inline-show item-filter">
+                        <label class="layui-form-label">项目名称</label>
+                        <div class="layui-input-block">
+                            @Html.DropDownList("ProjectId", ViewData["ProjectList"] as List<SelectListItem>)
+                        </div>
+                    </div>
+                    <div class="layui-form-item inline-show item-filter">
+                        <label class="layui-form-label">项目经理</label>
+                        <div class="layui-input-block">
+                            @Html.DropDownList("ManagerId", ViewData["ManagerList"] as List<SelectListItem>)
+                        </div>
+                    </div>
+                    <div class="layui-form-item inline-show item-filter">
+                        <label class="layui-form-label">开始时间</label>
+                        <div class="layui-input-block">
+                            <input type="text" class="layui-input" id="StartDate" name="StartDate" value="@StartDate">
+                        </div>
+                    </div>
+                    <div class="layui-form-item inline-show item-filter">
+                        <label class="layui-form-label">结束时间</label>
+                        <div class="layui-input-block">
+                            <input type="text" class="layui-input" id="EndDate" name="EndDate" value="@EndDate">
+                        </div>
+                    </div>
+                    <div class="layui-form-item inline-show item-filter">
+                        <label class="layui-form-label">项目状态</label>
+                        <div class="layui-input-block">
+                            @Html.DropDownList("ProjStatus", ViewData["ProjStatusList"] as List<SelectListItem>)
+                        </div>
+                    </div>
+                    <div class="layui-form-item inline-show item-filter">
+                        <input class="layui-btn" lay-submit lay-filter="formDemo" type="submit" value="搜索" />
+                    </div>
+
+
+                </div>
+            </form>
+
+            <table id="ProjectTable" class="table-hover gridtable">
+                <thead>
+                    <tr>
+                        <th>序号</th>
+                        <th>项目名称</th>
+                        <th>项目编号</th>
+                        <th>客户名称</th>
+                        <th>开始时间</th>
+                        <th>结束时间</th>
+                        <th>项目经理</th>
+                        <th>客户经理</th>
+                        <th>状态</th>
+                        <th>操作</th>
+                        <th>二维码</th>
+                    </tr>
+                </thead>
+
+                @foreach (var item in Model)
+                {
+                    var startDate = item.Project.StartDate.ToShortDateString();
+                    var endDate = item.Project.EndDate.GetValueOrDefault().ToShortDateString();
+                    <tr>
+                        <td>@rownum.ToString("00")</td>
+                        <td class="info">@Html.DisplayFor(model => item.Project.ProjectName)</td>
+                        <td>@Html.DisplayFor(model => item.Project.ProjectNum)</td>
+                        <td>@Html.DisplayFor(model => item.Project.CustomerName)</td>
+                        <td>@startDate</td>
+                        <td>@endDate</td>
+                        <td>@Html.DisplayFor(model => item.Manager.ManagerName)</td>
+                        <td>@Html.DisplayFor(model => item.CustomerManager.ManagerName)</td>
+                        <td>@Html.DisplayFor(model => item.StatusDic.VALUE)</td>
+                        <td>
+                            @Html.ActionLink("查看课程", "../Courses/Project_CoursesList", new { id = item.Project.id })
+                            @if (item.StatusDic.CODE == "N")
+                            {
+                                @Html.ActionLink("编辑项目", "Edit", new { id = item.Project.id })
+                            }
+                        </td>
+                        <td>@Html.ActionLink("生成二维码", "Details", new { id = item.Project.id })</td>
+                        <td hidden class="projectId">@Html.DisplayFor(model => item.Project.id)</td>
+                    </tr>
+
+                    rownum++;
+                }
+            </table>
+
+            <div class="layui-form-item inline-show">
+                <div class="layui-btn layui-btn-normal">@Html.ActionLink("添加", "Create")</div>
+            </div>
+            <div class="shared-pageList">
+                每页 @Model.PageSize 条记录，共 @Model.PageCount 页，当前第 @Model.PageNumber 页
+                @Html.PagedListPager(Model, page => Url.Action("Index", new { page, StartDate, EndDate, managerId, projStatus }))
+            </div>
+        </div>
+
+        <div class="clearfix"></div>
+        <div class="item-module">
+            <div class="item-title">
+                <img src="~/Content/images/icon_projectStudent (2).png" />
+                <span>项目学员管理</span>
+            </div>
+
+            <table id="studentList" lay-filter="test"></table>
+
+            <div id="result">
+
+            </div>
+        </div>
+    </div>
+   
+
+    
+</body>
+</html>

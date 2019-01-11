@@ -1,0 +1,1029 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+    <Schema Namespace="WenbaDBModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="Collections">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="UserId" Type="int" />
+          <Property Name="NoteId" Type="int" />
+          <Property Name="CommentId" Type="int" />
+          <Property Name="CreationDate" Type="datetime" />
+          <Property Name="CreatedBy" Type="int" />
+          <Property Name="LastUpdateDate" Type="datetime" />
+          <Property Name="LastUpdatedBy" Type="int" />
+        </EntityType>
+        <EntityType Name="Comments">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="NoteId" Type="int" Nullable="false" />
+          <Property Name="Comments" Type="nvarchar(max)" Nullable="false" />
+          <Property Name="LikeCount" Type="int" />
+          <Property Name="PublicFlag" Type="char" MaxLength="1" Nullable="false" />
+          <Property Name="CommentedBy" Type="int" Nullable="false" />
+          <Property Name="CommentedType" Type="char" MaxLength="1" Nullable="false" />
+          <Property Name="Attribute1" Type="nvarchar" MaxLength="50" />
+          <Property Name="Attribute2" Type="nvarchar" MaxLength="50" />
+          <Property Name="Attribute3" Type="nvarchar" MaxLength="50" />
+          <Property Name="Attribute4" Type="nvarchar" MaxLength="50" />
+          <Property Name="Attribute5" Type="nvarchar" MaxLength="50" />
+          <Property Name="Attribute6" Type="nvarchar" MaxLength="50" />
+          <Property Name="Attribute7" Type="nvarchar" MaxLength="50" />
+          <Property Name="Attribute8" Type="nvarchar" MaxLength="50" />
+          <Property Name="Attribute9" Type="nvarchar" MaxLength="50" />
+          <Property Name="Attribute10" Type="nvarchar" MaxLength="50" />
+          <Property Name="CreatedBy" Type="int" Nullable="false" />
+          <Property Name="CreationDate" Type="datetime" Nullable="false" />
+          <Property Name="LastUpdateDate" Type="datetime" Nullable="false" />
+          <Property Name="LastUpdatedBy" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Courses">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="ProjectId" Type="int" Nullable="false" />
+          <Property Name="CourseName" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="CourseNum" Type="nvarchar" MaxLength="50" />
+          <Property Name="CourseDesc" Type="nvarchar" MaxLength="500" />
+          <Property Name="ActiveFlag" Type="char" MaxLength="1" Nullable="false" />
+          <Property Name="TeacherId" Type="int" Nullable="false" />
+          <Property Name="EndDate" Type="datetime" />
+          <Property Name="StartDate" Type="datetime" />
+          <Property Name="Status" Type="char" MaxLength="10" />
+          <Property Name="Site" Type="nvarchar" MaxLength="100" />
+          <Property Name="Comments" Type="nvarchar" MaxLength="20" />
+          <Property Name="Attribute1" Type="nvarchar" MaxLength="50" />
+          <Property Name="Attribute2" Type="nvarchar" MaxLength="50" />
+          <Property Name="Attribute3" Type="nvarchar" MaxLength="50" />
+          <Property Name="Attribute4" Type="nvarchar" MaxLength="50" />
+          <Property Name="Attribute5" Type="varchar" MaxLength="50" />
+          <Property Name="Attribute6" Type="nvarchar" MaxLength="50" />
+          <Property Name="Attribute7" Type="nvarchar" MaxLength="50" />
+          <Property Name="Attribute8" Type="nvarchar" MaxLength="50" />
+          <Property Name="Attribute9" Type="nvarchar" MaxLength="50" />
+          <Property Name="Attribute10" Type="varchar" MaxLength="50" />
+          <Property Name="CreatedBy" Type="int" Nullable="false" />
+          <Property Name="CreationDate" Type="datetime" Nullable="false" />
+          <Property Name="LastUpdatedBy" Type="int" Nullable="false" />
+          <Property Name="LastUpdatedate" Type="datetime" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Dictionaries">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="TYPE" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="CODE" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="VALUE" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Enabled" Type="char" MaxLength="1" />
+          <Property Name="CreatedBy" Type="int" />
+          <Property Name="CreationDate" Type="datetime" />
+          <Property Name="LastUpdateDate" Type="datetime" />
+          <Property Name="LastUpdatedBy" Type="int" />
+        </EntityType>
+        <EntityType Name="Labels">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="LabelType" Type="char" MaxLength="10" Nullable="false" />
+          <Property Name="Label" Type="nvarchar" MaxLength="10" Nullable="false" />
+          <Property Name="Attribute1" Type="nvarchar" MaxLength="50" />
+          <Property Name="Attribute2" Type="nvarchar" MaxLength="50" />
+          <Property Name="Attribute3" Type="nvarchar" MaxLength="50" />
+          <Property Name="Attribute4" Type="nvarchar" MaxLength="50" />
+          <Property Name="Attribute5" Type="nvarchar" MaxLength="50" />
+          <Property Name="Attribute6" Type="nvarchar" MaxLength="50" />
+          <Property Name="Attribute7" Type="nvarchar" MaxLength="50" />
+          <Property Name="Attribute8" Type="nvarchar" MaxLength="50" />
+          <Property Name="Attribute9" Type="nvarchar" MaxLength="50" />
+          <Property Name="Attribute10" Type="nvarchar" MaxLength="50" />
+          <Property Name="CreatedBy" Type="int" Nullable="false" />
+          <Property Name="CreationDate" Type="datetime" Nullable="false" />
+          <Property Name="LastUpdateDate" Type="datetime" Nullable="false" />
+          <Property Name="LastUpdatedBy" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Likes">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="UserId" Type="int" Nullable="false" />
+          <Property Name="CommentId" Type="int" />
+          <Property Name="NoteId" Type="int" />
+          <Property Name="CreatedBy" Type="int" Nullable="false" />
+          <Property Name="CreationDate" Type="datetime" Nullable="false" />
+          <Property Name="LastUpdatedBy" Type="int" Nullable="false" />
+          <Property Name="LastUpdateDate" Type="datetime" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Managers">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="ManagerName" Type="nvarchar" MaxLength="15" Nullable="false" />
+          <Property Name="ManagerNum" Type="varchar" MaxLength="15" />
+          <Property Name="Gender" Type="varchar" MaxLength="1" />
+          <Property Name="Birthday" Type="date" />
+          <Property Name="HireDate" Type="date" />
+          <Property Name="ActiveFlag" Type="char" MaxLength="1" Nullable="false" />
+          <Property Name="Mobile" Type="varchar" MaxLength="15" Nullable="false" />
+          <Property Name="OpenId" Type="varchar" MaxLength="120" />
+          <Property Name="ManagerType" Type="char" MaxLength="1" Nullable="false" />
+          <Property Name="HeadImage" Type="nvarchar(max)" />
+          <Property Name="Comments" Type="nvarchar" MaxLength="50" />
+          <Property Name="Attribute1" Type="nvarchar" MaxLength="50" />
+          <Property Name="Attribute2" Type="nvarchar" MaxLength="50" />
+          <Property Name="Attribute3" Type="nvarchar" MaxLength="50" />
+          <Property Name="Attribute4" Type="nvarchar" MaxLength="50" />
+          <Property Name="Attribute5" Type="nvarchar" MaxLength="50" />
+          <Property Name="Attribute6" Type="nvarchar" MaxLength="50" />
+          <Property Name="Attribute7" Type="nvarchar" MaxLength="50" />
+          <Property Name="Attribute8" Type="nvarchar" MaxLength="50" />
+          <Property Name="Attribute9" Type="nvarchar" MaxLength="50" />
+          <Property Name="Attribute10" Type="nvarchar" MaxLength="50" />
+          <Property Name="CreatedBy" Type="int" Nullable="false" />
+          <Property Name="CreationDate" Type="datetime" Nullable="false" />
+          <Property Name="LastUpdatedBy" Type="int" Nullable="false" />
+          <Property Name="LastUpdateDate" Type="datetime" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Notes">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="UserId" Type="int" Nullable="false" />
+          <Property Name="CourseId" Type="int" />
+          <Property Name="LikeNum" Type="int" />
+          <Property Name="QuestionId" Type="int" />
+          <Property Name="Notes" Type="nvarchar(max)" Nullable="false" />
+          <Property Name="PublicFlag" Type="char" MaxLength="1" Nullable="false" />
+          <Property Name="Attribute1" Type="nvarchar" MaxLength="50" />
+          <Property Name="Attribute2" Type="nvarchar" MaxLength="50" />
+          <Property Name="Attribute3" Type="nvarchar" MaxLength="50" />
+          <Property Name="Attribute4" Type="nvarchar" MaxLength="50" />
+          <Property Name="Attribute5" Type="nvarchar" MaxLength="50" />
+          <Property Name="Attribute6" Type="nvarchar" MaxLength="50" />
+          <Property Name="Attribute7" Type="nvarchar" MaxLength="50" />
+          <Property Name="Attribute8" Type="nvarchar" MaxLength="50" />
+          <Property Name="Attribute9" Type="nvarchar" MaxLength="50" />
+          <Property Name="Attribute10" Type="nvarchar" MaxLength="50" />
+          <Property Name="CreatedBy" Type="int" Nullable="false" />
+          <Property Name="CreationDate" Type="datetime" Nullable="false" />
+          <Property Name="LastUpdateDate" Type="datetime" Nullable="false" />
+          <Property Name="LastUpdatedBy" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Projects">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="ProjectName" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="ProjectNum" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="StartDate" Type="datetime" Nullable="false" />
+          <Property Name="CustomerName" Type="nvarchar" MaxLength="100" />
+          <Property Name="EndDate" Type="datetime" />
+          <Property Name="ManagerId" Type="int" Nullable="false" />
+          <Property Name="CustManagerId" Type="int" Nullable="false" />
+          <Property Name="QRCode" Type="varchar" MaxLength="100" />
+          <Property Name="Status" Type="nvarchar" MaxLength="10" Nullable="false" />
+          <Property Name="Comments" Type="nvarchar" MaxLength="50" />
+          <Property Name="Attribute1" Type="nvarchar" MaxLength="50" />
+          <Property Name="Attribute2" Type="nvarchar" MaxLength="50" />
+          <Property Name="Attribute3" Type="varchar" MaxLength="50" />
+          <Property Name="Attribute4" Type="nvarchar" MaxLength="50" />
+          <Property Name="Attribute5" Type="nvarchar" MaxLength="50" />
+          <Property Name="Attribute6" Type="nvarchar" MaxLength="50" />
+          <Property Name="Attribute7" Type="nvarchar" MaxLength="50" />
+          <Property Name="Attribute8" Type="varchar" MaxLength="50" />
+          <Property Name="Attribute9" Type="nvarchar" MaxLength="50" />
+          <Property Name="Attribute10" Type="nvarchar" MaxLength="50" />
+          <Property Name="CreatedBy" Type="int" Nullable="false" />
+          <Property Name="CreationDate" Type="datetime" Nullable="false" />
+          <Property Name="LastUpdatedBy" Type="int" Nullable="false" />
+          <Property Name="LastUpdateDate" Type="datetime" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Questions">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="QuestionTitle" Type="nvarchar" MaxLength="100" />
+          <Property Name="QuestionDesc" Type="nvarchar(max)" Nullable="false" />
+          <Property Name="QuestionType" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="QuestionNum" Type="varchar" MaxLength="3" Nullable="false" />
+          <Property Name="CourseId" Type="int" Nullable="false" />
+          <Property Name="Comments" Type="nvarchar" MaxLength="50" />
+          <Property Name="CreatedBy" Type="int" Nullable="false" />
+          <Property Name="CreationDate" Type="datetime" Nullable="false" />
+          <Property Name="LastUpdateDate" Type="datetime" Nullable="false" />
+          <Property Name="LastUpdatedBy" Type="int" Nullable="false" />
+          <Property Name="Attribute1" Type="nvarchar" MaxLength="50" />
+          <Property Name="Attribute2" Type="nvarchar" MaxLength="50" />
+          <Property Name="Attribute3" Type="nvarchar" MaxLength="50" />
+          <Property Name="Attribute4" Type="nvarchar" MaxLength="50" />
+          <Property Name="Attribute5" Type="nvarchar" MaxLength="50" />
+          <Property Name="Attribute6" Type="nvarchar" MaxLength="50" />
+          <Property Name="Attribute7" Type="nvarchar" MaxLength="50" />
+          <Property Name="Attribute8" Type="nvarchar" MaxLength="50" />
+          <Property Name="Attribute9" Type="nvarchar" MaxLength="50" />
+          <Property Name="Attribute10" Type="nvarchar" MaxLength="50" />
+          <Property Name="Status" Type="varchar" MaxLength="10" />
+        </EntityType>
+        <EntityType Name="StudentAssgins">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="StudentId" Type="int" Nullable="false" />
+          <Property Name="ActiveFlag" Type="char" MaxLength="1" />
+          <Property Name="CourseId" Type="int" />
+          <Property Name="ProjectId" Type="int" Nullable="false" />
+          <Property Name="Attribute1" Type="nvarchar" MaxLength="50" />
+          <Property Name="Attribute2" Type="nvarchar" MaxLength="50" />
+          <Property Name="Attribute3" Type="nvarchar" MaxLength="50" />
+          <Property Name="Attribute4" Type="nvarchar" MaxLength="50" />
+          <Property Name="Attribute5" Type="nvarchar" MaxLength="50" />
+          <Property Name="Attribute6" Type="nvarchar" MaxLength="50" />
+          <Property Name="Attribute7" Type="nvarchar" MaxLength="50" />
+          <Property Name="Attribute8" Type="nvarchar" MaxLength="50" />
+          <Property Name="Attribute9" Type="nvarchar" MaxLength="50" />
+          <Property Name="Attribute10" Type="nvarchar" MaxLength="50" />
+          <Property Name="CreatedBy" Type="int" Nullable="false" />
+          <Property Name="CreationDate" Type="datetime" Nullable="false" />
+          <Property Name="LastUpdateDate" Type="datetime" Nullable="false" />
+          <Property Name="LastUpdatedBy" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Students">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="StudentName" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="StudentNum" Type="varchar" MaxLength="15" />
+          <Property Name="Gender" Type="varchar" MaxLength="1" />
+          <Property Name="Birthday" Type="date" />
+          <Property Name="Collegue" Type="nvarchar" MaxLength="50" />
+          <Property Name="Nationality" Type="nvarchar" MaxLength="15" />
+          <Property Name="ActiveFlag" Type="char" MaxLength="1" Nullable="false" />
+          <Property Name="HeadImage" Type="nvarchar(max)" />
+          <Property Name="Mobile" Type="varchar" MaxLength="15" Nullable="false" />
+          <Property Name="OpenId" Type="varchar" MaxLength="120" />
+          <Property Name="Comments" Type="nvarchar" MaxLength="50" />
+          <Property Name="Attribute1" Type="nvarchar" MaxLength="50" />
+          <Property Name="Attribute2" Type="nvarchar" MaxLength="50" />
+          <Property Name="Attribute3" Type="nvarchar" MaxLength="50" />
+          <Property Name="Attribute4" Type="nvarchar" MaxLength="50" />
+          <Property Name="Attribute5" Type="nvarchar" MaxLength="50" />
+          <Property Name="Attribute6" Type="nvarchar" MaxLength="50" />
+          <Property Name="Attribute7" Type="varchar" MaxLength="50" />
+          <Property Name="Attribute8" Type="nvarchar" MaxLength="50" />
+          <Property Name="Attribute9" Type="nvarchar" MaxLength="50" />
+          <Property Name="Attribute10" Type="nvarchar" MaxLength="50" />
+          <Property Name="CreatedBy" Type="int" Nullable="false" />
+          <Property Name="CreationDate" Type="datetime" Nullable="false" />
+          <Property Name="LastUpdatedBy" Type="int" />
+          <Property Name="LastUpdateDate" Type="datetime" />
+        </EntityType>
+        <EntityType Name="Users">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="UserName" Type="varchar" MaxLength="15" Nullable="false" />
+          <Property Name="Comments" Type="nvarchar" MaxLength="50" />
+          <Property Name="Password" Type="varchar" MaxLength="30" Nullable="false" />
+          <Property Name="StartDate" Type="datetime" Nullable="false" />
+          <Property Name="EndDate" Type="datetime" />
+          <Property Name="Role" Type="char" MaxLength="1" Nullable="false" />
+          <Property Name="PersonId" Type="int" Nullable="false" />
+          <Property Name="CreatedBy" Type="int" Nullable="false" />
+          <Property Name="CreationDate" Type="datetime" Nullable="false" />
+          <Property Name="LastUpdateDate" Type="datetime" Nullable="false" />
+          <Property Name="LastUpdatedBy" Type="int" Nullable="false" />
+          <Property Name="Attribute1" Type="nvarchar" MaxLength="50" />
+          <Property Name="Attribute2" Type="nvarchar" MaxLength="50" />
+          <Property Name="Attribute3" Type="nvarchar" MaxLength="50" />
+          <Property Name="Attribute4" Type="nvarchar" MaxLength="50" />
+          <Property Name="Attribute5" Type="nvarchar" MaxLength="50" />
+          <Property Name="Attribute6" Type="nvarchar" MaxLength="50" />
+          <Property Name="Attribute7" Type="nvarchar" MaxLength="50" />
+          <Property Name="Attribute8" Type="nvarchar" MaxLength="50" />
+          <Property Name="Attribute9" Type="nvarchar" MaxLength="50" />
+          <Property Name="Attribute10" Type="nvarchar" MaxLength="50" />
+        </EntityType>
+        <EntityContainer Name="WenbaDBModelStoreContainer">
+          <EntitySet Name="Collections" EntityType="Self.Collections" Schema="wenxue" store:Type="Tables" />
+          <EntitySet Name="Comments" EntityType="Self.Comments" Schema="wenxue" store:Type="Tables" />
+          <EntitySet Name="Courses" EntityType="Self.Courses" Schema="wenxue" store:Type="Tables" />
+          <EntitySet Name="Dictionaries" EntityType="Self.Dictionaries" Schema="wenxue" store:Type="Tables" />
+          <EntitySet Name="Labels" EntityType="Self.Labels" Schema="wenxue" store:Type="Tables" />
+          <EntitySet Name="Likes" EntityType="Self.Likes" Schema="wenxue" store:Type="Tables" />
+          <EntitySet Name="Managers" EntityType="Self.Managers" Schema="wenxue" store:Type="Tables" />
+          <EntitySet Name="Notes" EntityType="Self.Notes" Schema="wenxue" store:Type="Tables" />
+          <EntitySet Name="Projects" EntityType="Self.Projects" Schema="wenxue" store:Type="Tables" />
+          <EntitySet Name="Questions" EntityType="Self.Questions" Schema="wenxue" store:Type="Tables" />
+          <EntitySet Name="StudentAssgins" EntityType="Self.StudentAssgins" Schema="wenxue" store:Type="Tables" />
+          <EntitySet Name="Students" EntityType="Self.Students" Schema="wenxue" store:Type="Tables" />
+          <EntitySet Name="Users" EntityType="Self.Users" Schema="wenxue" store:Type="Tables" />
+        </EntityContainer>
+      </Schema></edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="WenbaDBModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityType Name="Collection">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="UserId" Type="Int32" />
+          <Property Name="NoteId" Type="Int32" />
+          <Property Name="CommentId" Type="Int32" />
+          <Property Name="CreationDate" Type="DateTime" Precision="3" />
+          <Property Name="CreatedBy" Type="Int32" />
+          <Property Name="LastUpdateDate" Type="DateTime" Precision="3" />
+          <Property Name="LastUpdatedBy" Type="Int32" />
+        </EntityType>
+        <EntityType Name="Comment">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="NoteId" Type="Int32" Nullable="false" />
+          <Property Name="Comments" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="LikeCount" Type="Int32" />
+          <Property Name="PublicFlag" Type="String" MaxLength="1" FixedLength="true" Unicode="false" Nullable="false" />
+          <Property Name="CommentedBy" Type="Int32" Nullable="false" />
+          <Property Name="CommentedType" Type="String" MaxLength="1" FixedLength="true" Unicode="false" Nullable="false" />
+          <Property Name="Attribute1" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Attribute2" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Attribute3" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Attribute4" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Attribute5" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Attribute6" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Attribute7" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Attribute8" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Attribute9" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Attribute10" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="CreatedBy" Type="Int32" Nullable="false" />
+          <Property Name="CreationDate" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="LastUpdateDate" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="LastUpdatedBy" Type="Int32" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Label">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="LabelType" Type="String" MaxLength="10" FixedLength="true" Unicode="false" Nullable="false" />
+          <Property Name="Label1" Type="String" MaxLength="10" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Attribute1" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Attribute2" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Attribute3" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Attribute4" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Attribute5" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Attribute6" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Attribute7" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Attribute8" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Attribute9" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Attribute10" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="CreatedBy" Type="Int32" Nullable="false" />
+          <Property Name="CreationDate" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="LastUpdateDate" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="LastUpdatedBy" Type="Int32" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Manager">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="ManagerName" Type="String" MaxLength="15" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="ManagerNum" Type="String" MaxLength="15" FixedLength="false" Unicode="false" />
+          <Property Name="Gender" Type="String" MaxLength="1" FixedLength="false" Unicode="false" />
+          <Property Name="Birthday" Type="DateTime" Precision="0" />
+          <Property Name="HireDate" Type="DateTime" Precision="0" />
+          <Property Name="ActiveFlag" Type="String" MaxLength="1" FixedLength="true" Unicode="false" Nullable="false" />
+          <Property Name="Mobile" Type="String" MaxLength="15" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="OpenId" Type="String" MaxLength="120" FixedLength="false" Unicode="false" />
+          <Property Name="ManagerType" Type="String" MaxLength="1" FixedLength="true" Unicode="false" Nullable="false" />
+          <Property Name="HeadImage" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="Comments" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Attribute1" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Attribute2" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Attribute3" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Attribute4" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Attribute5" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Attribute6" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Attribute7" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Attribute8" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Attribute9" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Attribute10" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="CreatedBy" Type="Int32" Nullable="false" />
+          <Property Name="CreationDate" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="LastUpdatedBy" Type="Int32" Nullable="false" />
+          <Property Name="LastUpdateDate" Type="DateTime" Nullable="false" Precision="3" />
+        </EntityType>
+        <EntityType Name="Note">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="UserId" Type="Int32" Nullable="false" />
+          <Property Name="CourseId" Type="Int32" />
+          <Property Name="LikeNum" Type="Int32" />
+          <Property Name="QuestionId" Type="Int32" />
+          <Property Name="Notes" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="PublicFlag" Type="String" MaxLength="1" FixedLength="true" Unicode="false" Nullable="false" />
+          <Property Name="Attribute1" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Attribute2" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Attribute3" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Attribute4" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Attribute5" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Attribute6" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Attribute7" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Attribute8" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Attribute9" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Attribute10" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="CreatedBy" Type="Int32" Nullable="false" />
+          <Property Name="CreationDate" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="LastUpdateDate" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="LastUpdatedBy" Type="Int32" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Project">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="ProjectName" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="ProjectNum" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="StartDate" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="CustomerName" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="EndDate" Type="DateTime" Precision="3" />
+          <Property Name="ManagerId" Type="Int32" Nullable="false" />
+          <Property Name="QRCode" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="Status" Type="String" MaxLength="10" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Comments" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Attribute1" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Attribute2" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Attribute3" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="Attribute4" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Attribute5" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Attribute6" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Attribute7" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Attribute8" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="Attribute9" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Attribute10" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="CreatedBy" Type="Int32" Nullable="false" />
+          <Property Name="CreationDate" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="LastUpdatedBy" Type="Int32" Nullable="false" />
+          <Property Name="LastUpdateDate" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="CustManagerId" Type="Int32" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Question">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="QuestionTitle" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="QuestionDesc" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="QuestionType" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="QuestionNum" Type="String" MaxLength="3" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="CourseId" Type="Int32" Nullable="false" />
+          <Property Name="Comments" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="CreatedBy" Type="Int32" Nullable="false" />
+          <Property Name="CreationDate" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="LastUpdateDate" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="LastUpdatedBy" Type="Int32" Nullable="false" />
+          <Property Name="Attribute1" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Attribute2" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Attribute3" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Attribute4" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Attribute5" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Attribute6" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Attribute7" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Attribute8" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Attribute9" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Attribute10" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Status" Type="String" MaxLength="10" FixedLength="false" Unicode="false" />
+        </EntityType>
+        <EntityType Name="StudentAssgin">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="StudentId" Type="Int32" Nullable="false" />
+          <Property Name="ActiveFlag" Type="String" MaxLength="1" FixedLength="true" Unicode="false" />
+          <Property Name="ProjectId" Type="Int32" Nullable="false" />
+          <Property Name="Attribute1" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Attribute2" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Attribute3" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Attribute4" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Attribute5" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Attribute6" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Attribute7" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Attribute8" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Attribute9" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Attribute10" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="CreatedBy" Type="Int32" Nullable="false" />
+          <Property Name="CreationDate" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="LastUpdateDate" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="LastUpdatedBy" Type="Int32" Nullable="false" />
+          <Property Name="CourseId" Type="Int32" />
+        </EntityType>
+        <EntityType Name="Student">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="StudentName" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="StudentNum" Type="String" MaxLength="15" FixedLength="false" Unicode="false" />
+          <Property Name="Gender" Type="String" MaxLength="1" FixedLength="false" Unicode="false" />
+          <Property Name="Birthday" Type="DateTime" Precision="0" />
+          <Property Name="Collegue" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Nationality" Type="String" MaxLength="15" FixedLength="false" Unicode="true" />
+          <Property Name="ActiveFlag" Type="String" MaxLength="1" FixedLength="true" Unicode="false" Nullable="false" />
+          <Property Name="HeadImage" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="Mobile" Type="String" MaxLength="15" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="OpenId" Type="String" MaxLength="120" FixedLength="false" Unicode="false" />
+          <Property Name="Comments" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Attribute1" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Attribute2" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Attribute3" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Attribute4" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Attribute5" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Attribute6" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Attribute7" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="Attribute8" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Attribute9" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Attribute10" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="CreatedBy" Type="Int32" Nullable="false" />
+          <Property Name="CreationDate" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="LastUpdatedBy" Type="Int32" />
+          <Property Name="LastUpdateDate" Type="DateTime" Precision="3" />
+        </EntityType>
+        <EntityType Name="User">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="UserName" Type="String" MaxLength="15" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="Comments" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Password" Type="String" MaxLength="30" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="StartDate" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="EndDate" Type="DateTime" Precision="3" />
+          <Property Name="Role" Type="String" MaxLength="1" FixedLength="true" Unicode="false" Nullable="false" />
+          <Property Name="PersonId" Type="Int32" Nullable="false" />
+          <Property Name="CreatedBy" Type="Int32" Nullable="false" />
+          <Property Name="CreationDate" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="LastUpdateDate" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="LastUpdatedBy" Type="Int32" Nullable="false" />
+          <Property Name="Attribute1" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Attribute2" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Attribute3" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Attribute4" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Attribute5" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Attribute6" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Attribute7" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Attribute8" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Attribute9" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Attribute10" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+        </EntityType>
+        <EntityContainer Name="WenbaDBContext" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="Collections" EntityType="Self.Collection" />
+          <EntitySet Name="Comments" EntityType="Self.Comment" />
+          <EntitySet Name="Labels" EntityType="Self.Label" />
+          <EntitySet Name="Managers" EntityType="Self.Manager" />
+          <EntitySet Name="Notes" EntityType="Self.Note" />
+          <EntitySet Name="Projects" EntityType="Self.Project" />
+          <EntitySet Name="Questions" EntityType="Self.Question" />
+          <EntitySet Name="StudentAssgins" EntityType="Self.StudentAssgin" />
+          <EntitySet Name="Students" EntityType="Self.Student" />
+          <EntitySet Name="Users" EntityType="Self.User" />
+          <EntitySet Name="Courses" EntityType="WenbaDBModel.Course" />
+          <EntitySet Name="Dictionaries" EntityType="WenbaDBModel.Dictionary" />
+          <EntitySet Name="Likes" EntityType="WenbaDBModel.Like" />
+        </EntityContainer>
+        <EntityType Name="Course">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="ProjectId" Type="Int32" Nullable="false" />
+          <Property Name="CourseName" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="CourseNum" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="CourseDesc" Type="String" MaxLength="500" FixedLength="false" Unicode="true" />
+          <Property Name="ActiveFlag" Type="String" Nullable="false" MaxLength="1" FixedLength="true" Unicode="false" />
+          <Property Name="TeacherId" Type="Int32" Nullable="false" />
+          <Property Name="EndDate" Type="DateTime" Precision="3" />
+          <Property Name="StartDate" Type="DateTime" Precision="3" />
+          <Property Name="Status" Type="String" MaxLength="10" FixedLength="true" Unicode="false" />
+          <Property Name="Site" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="Comments" Type="String" MaxLength="20" FixedLength="false" Unicode="true" />
+          <Property Name="Attribute1" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Attribute2" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Attribute3" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Attribute4" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Attribute5" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="Attribute6" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Attribute7" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Attribute8" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Attribute9" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Attribute10" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="CreatedBy" Type="Int32" Nullable="false" />
+          <Property Name="CreationDate" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="LastUpdatedBy" Type="Int32" Nullable="false" />
+          <Property Name="LastUpdatedate" Type="DateTime" Nullable="false" Precision="3" />
+        </EntityType>
+        <EntityType Name="Dictionary">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Enabled" Type="String" MaxLength="1" FixedLength="true" Unicode="false" />
+          <Property Name="CreatedBy" Type="Int32" />
+          <Property Name="CreationDate" Type="DateTime" Precision="3" />
+          <Property Name="LastUpdateDate" Type="DateTime" Precision="3" />
+          <Property Name="LastUpdatedBy" Type="Int32" />
+          <Property Name="TYPE" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="CODE" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="VALUE" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+        </EntityType>
+        <EntityType Name="Like">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="UserId" Type="Int32" Nullable="false" />
+          <Property Name="CommentId" Type="Int32" />
+          <Property Name="NoteId" Type="Int32" />
+          <Property Name="CreatedBy" Type="Int32" Nullable="false" />
+          <Property Name="CreationDate" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="LastUpdatedBy" Type="Int32" Nullable="false" />
+          <Property Name="LastUpdateDate" Type="DateTime" Nullable="false" Precision="3" />
+        </EntityType>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="WenbaDBModelStoreContainer" CdmEntityContainer="WenbaDBContext">
+          <EntitySetMapping Name="Collections">
+            <EntityTypeMapping TypeName="WenbaDBModel.Collection">
+              <MappingFragment StoreEntitySet="Collections">
+                <ScalarProperty Name="id" ColumnName="id" />
+                <ScalarProperty Name="UserId" ColumnName="UserId" />
+                <ScalarProperty Name="NoteId" ColumnName="NoteId" />
+                <ScalarProperty Name="CommentId" ColumnName="CommentId" />
+                <ScalarProperty Name="CreationDate" ColumnName="CreationDate" />
+                <ScalarProperty Name="CreatedBy" ColumnName="CreatedBy" />
+                <ScalarProperty Name="LastUpdateDate" ColumnName="LastUpdateDate" />
+                <ScalarProperty Name="LastUpdatedBy" ColumnName="LastUpdatedBy" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Comments">
+            <EntityTypeMapping TypeName="WenbaDBModel.Comment">
+              <MappingFragment StoreEntitySet="Comments">
+                <ScalarProperty Name="id" ColumnName="id" />
+                <ScalarProperty Name="NoteId" ColumnName="NoteId" />
+                <ScalarProperty Name="Comments" ColumnName="Comments" />
+                <ScalarProperty Name="LikeCount" ColumnName="LikeCount" />
+                <ScalarProperty Name="PublicFlag" ColumnName="PublicFlag" />
+                <ScalarProperty Name="CommentedBy" ColumnName="CommentedBy" />
+                <ScalarProperty Name="CommentedType" ColumnName="CommentedType" />
+                <ScalarProperty Name="Attribute1" ColumnName="Attribute1" />
+                <ScalarProperty Name="Attribute2" ColumnName="Attribute2" />
+                <ScalarProperty Name="Attribute3" ColumnName="Attribute3" />
+                <ScalarProperty Name="Attribute4" ColumnName="Attribute4" />
+                <ScalarProperty Name="Attribute5" ColumnName="Attribute5" />
+                <ScalarProperty Name="Attribute6" ColumnName="Attribute6" />
+                <ScalarProperty Name="Attribute7" ColumnName="Attribute7" />
+                <ScalarProperty Name="Attribute8" ColumnName="Attribute8" />
+                <ScalarProperty Name="Attribute9" ColumnName="Attribute9" />
+                <ScalarProperty Name="Attribute10" ColumnName="Attribute10" />
+                <ScalarProperty Name="CreatedBy" ColumnName="CreatedBy" />
+                <ScalarProperty Name="CreationDate" ColumnName="CreationDate" />
+                <ScalarProperty Name="LastUpdateDate" ColumnName="LastUpdateDate" />
+                <ScalarProperty Name="LastUpdatedBy" ColumnName="LastUpdatedBy" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Labels">
+            <EntityTypeMapping TypeName="WenbaDBModel.Label">
+              <MappingFragment StoreEntitySet="Labels">
+                <ScalarProperty Name="id" ColumnName="id" />
+                <ScalarProperty Name="LabelType" ColumnName="LabelType" />
+                <ScalarProperty Name="Label1" ColumnName="Label" />
+                <ScalarProperty Name="Attribute1" ColumnName="Attribute1" />
+                <ScalarProperty Name="Attribute2" ColumnName="Attribute2" />
+                <ScalarProperty Name="Attribute3" ColumnName="Attribute3" />
+                <ScalarProperty Name="Attribute4" ColumnName="Attribute4" />
+                <ScalarProperty Name="Attribute5" ColumnName="Attribute5" />
+                <ScalarProperty Name="Attribute6" ColumnName="Attribute6" />
+                <ScalarProperty Name="Attribute7" ColumnName="Attribute7" />
+                <ScalarProperty Name="Attribute8" ColumnName="Attribute8" />
+                <ScalarProperty Name="Attribute9" ColumnName="Attribute9" />
+                <ScalarProperty Name="Attribute10" ColumnName="Attribute10" />
+                <ScalarProperty Name="CreatedBy" ColumnName="CreatedBy" />
+                <ScalarProperty Name="CreationDate" ColumnName="CreationDate" />
+                <ScalarProperty Name="LastUpdateDate" ColumnName="LastUpdateDate" />
+                <ScalarProperty Name="LastUpdatedBy" ColumnName="LastUpdatedBy" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Managers">
+            <EntityTypeMapping TypeName="WenbaDBModel.Manager">
+              <MappingFragment StoreEntitySet="Managers">
+                <ScalarProperty Name="id" ColumnName="id" />
+                <ScalarProperty Name="ManagerName" ColumnName="ManagerName" />
+                <ScalarProperty Name="ManagerNum" ColumnName="ManagerNum" />
+                <ScalarProperty Name="Gender" ColumnName="Gender" />
+                <ScalarProperty Name="Birthday" ColumnName="Birthday" />
+                <ScalarProperty Name="HireDate" ColumnName="HireDate" />
+                <ScalarProperty Name="ActiveFlag" ColumnName="ActiveFlag" />
+                <ScalarProperty Name="Mobile" ColumnName="Mobile" />
+                <ScalarProperty Name="OpenId" ColumnName="OpenId" />
+                <ScalarProperty Name="ManagerType" ColumnName="ManagerType" />
+                <ScalarProperty Name="HeadImage" ColumnName="HeadImage" />
+                <ScalarProperty Name="Comments" ColumnName="Comments" />
+                <ScalarProperty Name="Attribute1" ColumnName="Attribute1" />
+                <ScalarProperty Name="Attribute2" ColumnName="Attribute2" />
+                <ScalarProperty Name="Attribute3" ColumnName="Attribute3" />
+                <ScalarProperty Name="Attribute4" ColumnName="Attribute4" />
+                <ScalarProperty Name="Attribute5" ColumnName="Attribute5" />
+                <ScalarProperty Name="Attribute6" ColumnName="Attribute6" />
+                <ScalarProperty Name="Attribute7" ColumnName="Attribute7" />
+                <ScalarProperty Name="Attribute8" ColumnName="Attribute8" />
+                <ScalarProperty Name="Attribute9" ColumnName="Attribute9" />
+                <ScalarProperty Name="Attribute10" ColumnName="Attribute10" />
+                <ScalarProperty Name="CreatedBy" ColumnName="CreatedBy" />
+                <ScalarProperty Name="CreationDate" ColumnName="CreationDate" />
+                <ScalarProperty Name="LastUpdatedBy" ColumnName="LastUpdatedBy" />
+                <ScalarProperty Name="LastUpdateDate" ColumnName="LastUpdateDate" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Notes">
+            <EntityTypeMapping TypeName="WenbaDBModel.Note">
+              <MappingFragment StoreEntitySet="Notes">
+                <ScalarProperty Name="id" ColumnName="id" />
+                <ScalarProperty Name="UserId" ColumnName="UserId" />
+                <ScalarProperty Name="CourseId" ColumnName="CourseId" />
+                <ScalarProperty Name="LikeNum" ColumnName="LikeNum" />
+                <ScalarProperty Name="QuestionId" ColumnName="QuestionId" />
+                <ScalarProperty Name="Notes" ColumnName="Notes" />
+                <ScalarProperty Name="PublicFlag" ColumnName="PublicFlag" />
+                <ScalarProperty Name="Attribute1" ColumnName="Attribute1" />
+                <ScalarProperty Name="Attribute2" ColumnName="Attribute2" />
+                <ScalarProperty Name="Attribute3" ColumnName="Attribute3" />
+                <ScalarProperty Name="Attribute4" ColumnName="Attribute4" />
+                <ScalarProperty Name="Attribute5" ColumnName="Attribute5" />
+                <ScalarProperty Name="Attribute6" ColumnName="Attribute6" />
+                <ScalarProperty Name="Attribute7" ColumnName="Attribute7" />
+                <ScalarProperty Name="Attribute8" ColumnName="Attribute8" />
+                <ScalarProperty Name="Attribute9" ColumnName="Attribute9" />
+                <ScalarProperty Name="Attribute10" ColumnName="Attribute10" />
+                <ScalarProperty Name="CreatedBy" ColumnName="CreatedBy" />
+                <ScalarProperty Name="CreationDate" ColumnName="CreationDate" />
+                <ScalarProperty Name="LastUpdateDate" ColumnName="LastUpdateDate" />
+                <ScalarProperty Name="LastUpdatedBy" ColumnName="LastUpdatedBy" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Projects">
+            <EntityTypeMapping TypeName="WenbaDBModel.Project">
+              <MappingFragment StoreEntitySet="Projects">
+                <ScalarProperty Name="CustManagerId" ColumnName="CustManagerId" />
+                <ScalarProperty Name="id" ColumnName="id" />
+                <ScalarProperty Name="ProjectName" ColumnName="ProjectName" />
+                <ScalarProperty Name="ProjectNum" ColumnName="ProjectNum" />
+                <ScalarProperty Name="StartDate" ColumnName="StartDate" />
+                <ScalarProperty Name="CustomerName" ColumnName="CustomerName" />
+                <ScalarProperty Name="EndDate" ColumnName="EndDate" />
+                <ScalarProperty Name="ManagerId" ColumnName="ManagerId" />
+                <ScalarProperty Name="QRCode" ColumnName="QRCode" />
+                <ScalarProperty Name="Status" ColumnName="Status" />
+                <ScalarProperty Name="Comments" ColumnName="Comments" />
+                <ScalarProperty Name="Attribute1" ColumnName="Attribute1" />
+                <ScalarProperty Name="Attribute2" ColumnName="Attribute2" />
+                <ScalarProperty Name="Attribute3" ColumnName="Attribute3" />
+                <ScalarProperty Name="Attribute4" ColumnName="Attribute4" />
+                <ScalarProperty Name="Attribute5" ColumnName="Attribute5" />
+                <ScalarProperty Name="Attribute6" ColumnName="Attribute6" />
+                <ScalarProperty Name="Attribute7" ColumnName="Attribute7" />
+                <ScalarProperty Name="Attribute8" ColumnName="Attribute8" />
+                <ScalarProperty Name="Attribute9" ColumnName="Attribute9" />
+                <ScalarProperty Name="Attribute10" ColumnName="Attribute10" />
+                <ScalarProperty Name="CreatedBy" ColumnName="CreatedBy" />
+                <ScalarProperty Name="CreationDate" ColumnName="CreationDate" />
+                <ScalarProperty Name="LastUpdatedBy" ColumnName="LastUpdatedBy" />
+                <ScalarProperty Name="LastUpdateDate" ColumnName="LastUpdateDate" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Questions">
+            <EntityTypeMapping TypeName="WenbaDBModel.Question">
+              <MappingFragment StoreEntitySet="Questions">
+                <ScalarProperty Name="Status" ColumnName="Status" />
+                <ScalarProperty Name="id" ColumnName="id" />
+                <ScalarProperty Name="QuestionTitle" ColumnName="QuestionTitle" />
+                <ScalarProperty Name="QuestionDesc" ColumnName="QuestionDesc" />
+                <ScalarProperty Name="QuestionType" ColumnName="QuestionType" />
+                <ScalarProperty Name="QuestionNum" ColumnName="QuestionNum" />
+                <ScalarProperty Name="CourseId" ColumnName="CourseId" />
+                <ScalarProperty Name="Comments" ColumnName="Comments" />
+                <ScalarProperty Name="CreatedBy" ColumnName="CreatedBy" />
+                <ScalarProperty Name="CreationDate" ColumnName="CreationDate" />
+                <ScalarProperty Name="LastUpdateDate" ColumnName="LastUpdateDate" />
+                <ScalarProperty Name="LastUpdatedBy" ColumnName="LastUpdatedBy" />
+                <ScalarProperty Name="Attribute1" ColumnName="Attribute1" />
+                <ScalarProperty Name="Attribute2" ColumnName="Attribute2" />
+                <ScalarProperty Name="Attribute3" ColumnName="Attribute3" />
+                <ScalarProperty Name="Attribute4" ColumnName="Attribute4" />
+                <ScalarProperty Name="Attribute5" ColumnName="Attribute5" />
+                <ScalarProperty Name="Attribute6" ColumnName="Attribute6" />
+                <ScalarProperty Name="Attribute7" ColumnName="Attribute7" />
+                <ScalarProperty Name="Attribute8" ColumnName="Attribute8" />
+                <ScalarProperty Name="Attribute9" ColumnName="Attribute9" />
+                <ScalarProperty Name="Attribute10" ColumnName="Attribute10" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="StudentAssgins">
+            <EntityTypeMapping TypeName="WenbaDBModel.StudentAssgin">
+              <MappingFragment StoreEntitySet="StudentAssgins">
+                <ScalarProperty Name="CourseId" ColumnName="CourseId" />
+                <ScalarProperty Name="id" ColumnName="id" />
+                <ScalarProperty Name="StudentId" ColumnName="StudentId" />
+                <ScalarProperty Name="ActiveFlag" ColumnName="ActiveFlag" />
+                <ScalarProperty Name="ProjectId" ColumnName="ProjectId" />
+                <ScalarProperty Name="Attribute1" ColumnName="Attribute1" />
+                <ScalarProperty Name="Attribute2" ColumnName="Attribute2" />
+                <ScalarProperty Name="Attribute3" ColumnName="Attribute3" />
+                <ScalarProperty Name="Attribute4" ColumnName="Attribute4" />
+                <ScalarProperty Name="Attribute5" ColumnName="Attribute5" />
+                <ScalarProperty Name="Attribute6" ColumnName="Attribute6" />
+                <ScalarProperty Name="Attribute7" ColumnName="Attribute7" />
+                <ScalarProperty Name="Attribute8" ColumnName="Attribute8" />
+                <ScalarProperty Name="Attribute9" ColumnName="Attribute9" />
+                <ScalarProperty Name="Attribute10" ColumnName="Attribute10" />
+                <ScalarProperty Name="CreatedBy" ColumnName="CreatedBy" />
+                <ScalarProperty Name="CreationDate" ColumnName="CreationDate" />
+                <ScalarProperty Name="LastUpdateDate" ColumnName="LastUpdateDate" />
+                <ScalarProperty Name="LastUpdatedBy" ColumnName="LastUpdatedBy" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Students">
+            <EntityTypeMapping TypeName="WenbaDBModel.Student">
+              <MappingFragment StoreEntitySet="Students">
+                <ScalarProperty Name="id" ColumnName="id" />
+                <ScalarProperty Name="StudentName" ColumnName="StudentName" />
+                <ScalarProperty Name="StudentNum" ColumnName="StudentNum" />
+                <ScalarProperty Name="Gender" ColumnName="Gender" />
+                <ScalarProperty Name="Birthday" ColumnName="Birthday" />
+                <ScalarProperty Name="Collegue" ColumnName="Collegue" />
+                <ScalarProperty Name="Nationality" ColumnName="Nationality" />
+                <ScalarProperty Name="ActiveFlag" ColumnName="ActiveFlag" />
+                <ScalarProperty Name="HeadImage" ColumnName="HeadImage" />
+                <ScalarProperty Name="Mobile" ColumnName="Mobile" />
+                <ScalarProperty Name="OpenId" ColumnName="OpenId" />
+                <ScalarProperty Name="Comments" ColumnName="Comments" />
+                <ScalarProperty Name="Attribute1" ColumnName="Attribute1" />
+                <ScalarProperty Name="Attribute2" ColumnName="Attribute2" />
+                <ScalarProperty Name="Attribute3" ColumnName="Attribute3" />
+                <ScalarProperty Name="Attribute4" ColumnName="Attribute4" />
+                <ScalarProperty Name="Attribute5" ColumnName="Attribute5" />
+                <ScalarProperty Name="Attribute6" ColumnName="Attribute6" />
+                <ScalarProperty Name="Attribute7" ColumnName="Attribute7" />
+                <ScalarProperty Name="Attribute8" ColumnName="Attribute8" />
+                <ScalarProperty Name="Attribute9" ColumnName="Attribute9" />
+                <ScalarProperty Name="Attribute10" ColumnName="Attribute10" />
+                <ScalarProperty Name="CreatedBy" ColumnName="CreatedBy" />
+                <ScalarProperty Name="CreationDate" ColumnName="CreationDate" />
+                <ScalarProperty Name="LastUpdatedBy" ColumnName="LastUpdatedBy" />
+                <ScalarProperty Name="LastUpdateDate" ColumnName="LastUpdateDate" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Users">
+            <EntityTypeMapping TypeName="WenbaDBModel.User">
+              <MappingFragment StoreEntitySet="Users">
+                <ScalarProperty Name="id" ColumnName="id" />
+                <ScalarProperty Name="UserName" ColumnName="UserName" />
+                <ScalarProperty Name="Comments" ColumnName="Comments" />
+                <ScalarProperty Name="Password" ColumnName="Password" />
+                <ScalarProperty Name="StartDate" ColumnName="StartDate" />
+                <ScalarProperty Name="EndDate" ColumnName="EndDate" />
+                <ScalarProperty Name="Role" ColumnName="Role" />
+                <ScalarProperty Name="PersonId" ColumnName="PersonId" />
+                <ScalarProperty Name="CreatedBy" ColumnName="CreatedBy" />
+                <ScalarProperty Name="CreationDate" ColumnName="CreationDate" />
+                <ScalarProperty Name="LastUpdateDate" ColumnName="LastUpdateDate" />
+                <ScalarProperty Name="LastUpdatedBy" ColumnName="LastUpdatedBy" />
+                <ScalarProperty Name="Attribute1" ColumnName="Attribute1" />
+                <ScalarProperty Name="Attribute2" ColumnName="Attribute2" />
+                <ScalarProperty Name="Attribute3" ColumnName="Attribute3" />
+                <ScalarProperty Name="Attribute4" ColumnName="Attribute4" />
+                <ScalarProperty Name="Attribute5" ColumnName="Attribute5" />
+                <ScalarProperty Name="Attribute6" ColumnName="Attribute6" />
+                <ScalarProperty Name="Attribute7" ColumnName="Attribute7" />
+                <ScalarProperty Name="Attribute8" ColumnName="Attribute8" />
+                <ScalarProperty Name="Attribute9" ColumnName="Attribute9" />
+                <ScalarProperty Name="Attribute10" ColumnName="Attribute10" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Courses">
+            <EntityTypeMapping TypeName="IsTypeOf(WenbaDBModel.Course)">
+              <MappingFragment StoreEntitySet="Courses">
+                <ScalarProperty Name="LastUpdatedate" ColumnName="LastUpdatedate" />
+                <ScalarProperty Name="LastUpdatedBy" ColumnName="LastUpdatedBy" />
+                <ScalarProperty Name="CreationDate" ColumnName="CreationDate" />
+                <ScalarProperty Name="CreatedBy" ColumnName="CreatedBy" />
+                <ScalarProperty Name="Attribute10" ColumnName="Attribute10" />
+                <ScalarProperty Name="Attribute9" ColumnName="Attribute9" />
+                <ScalarProperty Name="Attribute8" ColumnName="Attribute8" />
+                <ScalarProperty Name="Attribute7" ColumnName="Attribute7" />
+                <ScalarProperty Name="Attribute6" ColumnName="Attribute6" />
+                <ScalarProperty Name="Attribute5" ColumnName="Attribute5" />
+                <ScalarProperty Name="Attribute4" ColumnName="Attribute4" />
+                <ScalarProperty Name="Attribute3" ColumnName="Attribute3" />
+                <ScalarProperty Name="Attribute2" ColumnName="Attribute2" />
+                <ScalarProperty Name="Attribute1" ColumnName="Attribute1" />
+                <ScalarProperty Name="Comments" ColumnName="Comments" />
+                <ScalarProperty Name="Site" ColumnName="Site" />
+                <ScalarProperty Name="Status" ColumnName="Status" />
+                <ScalarProperty Name="StartDate" ColumnName="StartDate" />
+                <ScalarProperty Name="EndDate" ColumnName="EndDate" />
+                <ScalarProperty Name="TeacherId" ColumnName="TeacherId" />
+                <ScalarProperty Name="ActiveFlag" ColumnName="ActiveFlag" />
+                <ScalarProperty Name="CourseDesc" ColumnName="CourseDesc" />
+                <ScalarProperty Name="CourseNum" ColumnName="CourseNum" />
+                <ScalarProperty Name="CourseName" ColumnName="CourseName" />
+                <ScalarProperty Name="ProjectId" ColumnName="ProjectId" />
+                <ScalarProperty Name="id" ColumnName="id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Dictionaries">
+            <EntityTypeMapping TypeName="IsTypeOf(WenbaDBModel.Dictionary)">
+              <MappingFragment StoreEntitySet="Dictionaries">
+                <ScalarProperty Name="VALUE" ColumnName="VALUE" />
+                <ScalarProperty Name="CODE" ColumnName="CODE" />
+                <ScalarProperty Name="TYPE" ColumnName="TYPE" />
+                <ScalarProperty Name="LastUpdatedBy" ColumnName="LastUpdatedBy" />
+                <ScalarProperty Name="LastUpdateDate" ColumnName="LastUpdateDate" />
+                <ScalarProperty Name="CreationDate" ColumnName="CreationDate" />
+                <ScalarProperty Name="CreatedBy" ColumnName="CreatedBy" />
+                <ScalarProperty Name="Enabled" ColumnName="Enabled" />
+                <ScalarProperty Name="id" ColumnName="id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Likes">
+            <EntityTypeMapping TypeName="WenbaDBModel.Like">
+              <MappingFragment StoreEntitySet="Likes">
+                <ScalarProperty Name="LastUpdateDate" ColumnName="LastUpdateDate" />
+                <ScalarProperty Name="LastUpdatedBy" ColumnName="LastUpdatedBy" />
+                <ScalarProperty Name="CreationDate" ColumnName="CreationDate" />
+                <ScalarProperty Name="CreatedBy" ColumnName="CreatedBy" />
+                <ScalarProperty Name="NoteId" ColumnName="NoteId" />
+                <ScalarProperty Name="CommentId" ColumnName="CommentId" />
+                <ScalarProperty Name="UserId" ColumnName="UserId" />
+                <ScalarProperty Name="id" ColumnName="id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="true" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
+        <DesignerProperty Name="UseLegacyProvider" Value="false" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="None" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>

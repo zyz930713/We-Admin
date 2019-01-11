@@ -1,0 +1,117 @@
+﻿@model Wenba.Models.Project
+
+@{
+    ViewBag.Title = "Create";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+
+@using (Html.BeginForm()) 
+{
+    @Html.AntiForgeryToken()
+    
+    <div class="form-horizontal">
+        <h4>创建一个新的项目</h4>
+        <hr />
+        <div class="layui-form">
+            @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+            <div class="layui-form-item">
+                @*@Html.LabelFor(model => model.ProjectName, htmlAttributes: new { @class = "control-label col-md-2" })*@
+                <label class="layui-form-label">项目名称</label>
+                <div class="layui-input-block">
+                    @Html.EditorFor(model => model.ProjectName, new { htmlAttributes = new { @class = "form-control layui-input" } })
+                    @Html.ValidationMessageFor(model => model.ProjectName, "", new { @class = "text-danger " })
+                </div>
+            </div>
+
+            <div class="layui-form-item">
+               @*@Html.LabelFor(model => model.ProjectNum, htmlAttributes: new { @class = "control-label col-md-2" })*@
+                <label class="layui-form-label">项目编号</label>
+                <div class="layui-input-block">
+                    @Html.EditorFor(model => model.ProjectNum, new { htmlAttributes = new { @class = "form-control layui-input" } })
+                    @Html.ValidationMessageFor(model => model.ProjectNum, "", new { @class = "text-danger" })
+                </div>
+            </div>
+            <div class="layui-form-item">
+                @*@Html.LabelFor(model => model.CustomerName, htmlAttributes: new { @class = "control-label col-md-2" })*@
+                <label class="layui-form-label">客户名称</label>
+                <div class="layui-input-block">
+                    @Html.EditorFor(model => model.CustomerName, new { htmlAttributes = new { @class = "form-control layui-input" } })
+                    @Html.ValidationMessageFor(model => model.CustomerName, "", new { @class = "text-danger" })
+                </div>
+            </div>
+            <div class="layui-form-item">
+                @*@Html.LabelFor(model => model.StartDate, htmlAttributes: new { @class = "control-label col-md-2" })*@
+                <label class="layui-form-label">项目开始时间</label>
+                <div class="layui-input-block">
+                    @Html.EditorFor(model => model.StartDate, new { htmlAttributes = new { @class = "form-control layui-input", @type = "text" } })
+                    @Html.ValidationMessageFor(model => model.StartDate, "", new { @class = "text-danger" })
+                </div>
+            </div>
+            <div class="layui-form-item">
+                @*@Html.LabelFor(model => model.EndDate, htmlAttributes: new { @class = "control-label col-md-2" })*@
+                <label class="layui-form-label">项目结束时间</label>
+                <div class="layui-input-block">
+                   @Html.EditorFor(model => model.EndDate, new { htmlAttributes = new { @class = "form-control layui-input", @type = "text" } })
+                @Html.ValidationMessageFor(model => model.EndDate, "", new { @class = "text-danger" })
+                </div>
+            </div>
+            <div class="layui-form-item">
+               @*@Html.LabelFor(model => model.ManagerId, htmlAttributes: new { @class = "control-label col-md-2" })*@
+                <label class="layui-form-label">项目经理</label>
+                <div class="layui-input-block">
+                    @*@Html.EditorFor(model => model.ManagerId, new { htmlAttributes = new { @class = "form-control" } })
+                    @Html.ValidationMessageFor(model => model.ManagerId, "", new { @class = "text-danger" })*@
+                    @Html.DropDownList("ManagerId", ViewData["ManagerList"] as List<SelectListItem>, "请选择")
+                </div>
+            </div>
+            <div class="layui-form-item">
+                <label class="layui-form-label">客户经理</label>
+                <div class="layui-input-block">
+                    @Html.DropDownList("CustManagerId", ViewData["CostManagerList"] as List<SelectListItem>, "请选择")
+                </div>
+            </div>
+
+            <div class="layui-form-item">
+               @*@Html.LabelFor(model => model.Status, htmlAttributes: new { @class = "control-label col-md-2" })*@
+                <label class="layui-form-label">项目状态</label>
+                <div class="layui-input-block">
+                   @*@Html.EditorFor(model => model.Status, new { htmlAttributes = new { @class = "form-control" } })
+                   @Html.ValidationMessageFor(model => model.Status, "", new { @class = "text-danger" })*@
+                   @Html.DropDownList("Status", ViewData["ProjStatusList"] as List<SelectListItem>, "请选择")
+            </div>
+
+
+          
+            <div class="layui-form-item layui-form-text" style="margin-top:12px">
+                    @*@Html.LabelFor(model => model.Comments, htmlAttributes: new { @class = "control-label col-md-2" })*@
+                    <label class="layui-form-label">备注</label>
+                    <div class="layui-input-block">
+                        @Html.EditorFor(model => model.Comments, new { htmlAttributes = new { @class = "form-control layui-textarea" } })
+                        @Html.ValidationMessageFor(model => model.Comments, "", new { @class = "text-danger" })
+                    </div>
+           </div>
+
+                <div class="layui-form-item">
+                    <div>
+                        <input type="submit" class="layui-btn layui-btn-normal" value="提交"/>
+                    </div>
+                </div>
+                
+            <div>
+                <label>@ViewBag.ErrorMsg</label>
+            </div>
+        </div>
+    </div>
+    </div>   
+}
+
+<div>
+    @Html.ActionLink("返回项目列表", "Index")
+</div>
+
+<script>
+   
+</script>
+
+

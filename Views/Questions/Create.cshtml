@@ -1,0 +1,196 @@
+﻿@model Wenba.ViewModels.QuestionsMassVM
+@{
+    ViewBag.Title = "Create";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>添加</h2>
+
+
+@using (Html.BeginForm("Create", "Questions", FormMethod.Post))
+{
+    @Html.AntiForgeryToken()
+
+
+
+
+        <div class="form-horizontal">
+            <h4>Question</h4>
+            <hr />
+            @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+
+
+            <div class="layui-form-item">
+                <label class="layui-form-label">项目名称</label>
+                <div class="layui-input-block">
+                    @*@Html.DropDownList("ProjectId", new SelectList(ViewBag.ProjectList, "projectId", "projectName"), "所有项目", new { @onchange = "GetProjectId(this.value)" })*@
+                    @Html.DropDownList("ProjectId", ViewData["ProjectList"] as List<SelectListItem>, "请选择项目", new { @onchange = "GetProjectId(this.value)" })
+                    @Html.DropDownListFor(n => n.CourseId, new SelectList(Enumerable.Empty<SelectListItem>(), "courseId", "courseName"), "请先选择项目")
+                </div>
+            </div>
+
+            <div class="form-group layui-form">
+                类别
+                <div class="col-md-10">
+                    @Html.DropDownList("QuestionType", new List<SelectListItem>(){ new SelectListItem() { Text="问题",Value="Q"}
+                                                                                  ,new SelectListItem() { Text="通知",Value="N"} })
+                    @Html.ValidationMessageFor(model => model.QuestionType, "", new { @class = "text-danger" })
+                </div>
+            </div>
+
+            @*<div class="form-group">
+                创建人
+                <div class="col-md-10">
+                    @Html.EditorFor(model => model.CreatedBy, new { htmlAttributes = new { @class = "form-control" } })
+                    @Html.ValidationMessageFor(model => model.CreatedBy, "", new { @class = "text-danger" })
+                </div>
+            </div>
+
+            <div class="form-group">
+                创建时间
+                <div class="col-md-10">
+                    @Html.EditorFor(model => model.CreationDate, new { htmlAttributes = new { @class = "form-control" } })
+                    @Html.ValidationMessageFor(model => model.CreationDate, "", new { @class = "text-danger" })
+                </div>
+            </div>
+
+            <div class="form-group">
+                最近更新人
+                <div class="col-md-10">
+                    @Html.EditorFor(model => model.LastUpdatedBy, new { htmlAttributes = new { @class = "form-control" } })
+                    @Html.ValidationMessageFor(model => model.LastUpdatedBy, "", new { @class = "text-danger" })
+                </div>
+            </div>
+
+            <div class="form-group">
+                最近更新时间
+                <div class="col-md-10">
+                    @Html.EditorFor(model => model.LastUpdateDate, new { htmlAttributes = new { @class = "form-control" } })
+                    @Html.ValidationMessageFor(model => model.LastUpdateDate, "", new { @class = "text-danger" })
+                </div>
+            </div>*@
+       
+
+            <br />
+            <br />
+            <input type="button" value="新增" onclick="createRow()" class="layui-btn">
+            <input type="button" value="删除" onclick="delRow()" class="layui-btn layui-btn-danger">
+            
+
+            <table name="editTable" id="editTable" class="table-hover gridtable">
+                <tr>
+                    <th style="width:5%">选择</th>
+                    <th style="width:5%">编号</th>
+                    <th style="width:60%">内容</th>
+                    <th style="width:20%">备注</th>
+                </tr>
+
+                <tbody id="tbody"></tbody>
+            </table>
+
+            
+
+            <br />
+
+
+            <div class="form-group">
+                <div class="col-md-offset-2 col-md-10">
+                    <input id="saveBtn" type="submit" value="保存" class="layui-btn layui-btn-normal" onclick="saveQues()" />
+                </div>
+
+                <div>
+                    <label>@ViewBag.ErrorMsg</label>
+                </div>
+
+            </div>
+        </div>
+
+}
+
+<div>
+    @Html.ActionLink("返回列表", "Index")
+</div>
+
+<script>
+    //获取项目id 再给子下拉框赋值
+    function GetProjectId(id) {
+        if (id == null) {
+
+            $("#CourseId").empty().append("<option>请选择项目</option>");
+            return;
+        }
+        else {
+            $("#CourseId").empty();
+            $.ajax({
+                url: "/Questions/BindCourse/" + id,
+                type: "post",
+                success: function (data) {
+                    $(data).each(function () {
+                        $("#CourseId").append("<option value='" + this.Value + "'>" + this.Text + "</option>")
+                    })
+                }
+
+            })
+        }
+        
+    }
+
+    //动态生成表格
+    function createRow() {
+        var editTable = document.getElementById("tbody");
+        var tr = document.createElement("tr");
+        var td0 = document.createElement("td");
+        var checkbox = document.createElement("input");
+        
+        
+        checkbox.type = "checkbox";
+        checkbox.name = "checkRow";
+        td0.appendChild(checkbox);
+        td0.className = "checkCenter";
+        var td1 = document.createElement("td");
+        td1.innerHTML = "<input type='text' class='quesInfo QuestionNum' name='QuestionNum' >";
+
+        var td2 = document.createElement("td");
+        td2.innerHTML = "<input type='text' class='quesInfo' name='QuestionDesc' >";
+
+        var td3 = document.createElement("td");
+        td3.innerHTML = "<input type='text' class='quesInfo' name='Comments' >";
+
+        tr.appendChild(td0);
+        tr.appendChild(td1);
+        tr.appendChild(td2);
+        tr.appendChild(td3);
+        editTable.appendChild(tr);
+    }
+
+    function delRow() {
+        var editTable = document.getElementById("tbody");
+       
+       if (confirm("确认删除所选?")) {
+            var checkboxs = document.getElementsByName("checkRow");
+            for (var i = 0; i < checkboxs.length; i++) {
+                if (checkboxs[i].checked) {
+                    var n = checkboxs[i].parentNode.parentNode;
+                    editTable.removeChild(n);
+                    i--;
+                }
+            }
+
+        }
+    }
+
+    function saveQues() {
+       
+        var checkQ = $(".QuestionNum").val();
+        if (checkQ.length >= 4) {
+            alert("编号长度应不大于三位数！");
+            return fasle;
+        }
+    }
+    
+</script>
+
+
+<script src="~/Scripts/jquery-1.10.2.min.js"></script>
+<script src="~/Scripts/jquery.validate.min.js"></script>
+<script src="~/Scripts/jquery.validate.unobtrusive.min.js"></script>

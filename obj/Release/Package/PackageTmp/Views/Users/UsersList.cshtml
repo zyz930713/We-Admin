@@ -1,0 +1,275 @@
+﻿@using PagedList.Mvc;
+@model Wenba.Controllers.UsersController.viewModel
+@{
+    ViewBag.Title = "UsersList";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+    var username = ViewData["username"];
+    var mobile = ViewData["mobile"];
+    var sex = ViewData["sex"];
+    var managernum = ViewData["managernum"];
+
+    var usernames = ViewData["usernames"];
+    var sexs = ViewData["sexs"];
+    var mobiles = ViewData["mobiles"];
+
+    int rownum = 1;
+    if (Model.ManagerModel.IsFirstPage)
+    {
+        rownum = 1;
+    }
+    else
+    {
+        rownum = Model.ManagerModel.PageSize * (Model.ManagerModel.PageNumber - 1) + 1;
+    }
+
+    int rownums = 1;
+    if (Model.StudentModel.IsFirstPage)
+    {
+        rownums = 1;
+    }
+    else
+    {
+        rownums = Model.StudentModel.PageSize * (Model.StudentModel.PageNumber - 1) + 1;
+    }
+}
+<script src="~/Scripts/jquery-1.10.2.js"></script>
+<script src="~/Scripts/jquery-1.10.2.min.js"></script>
+
+<link href="~/Content/PagedList.css" rel="stylesheet" />
+<div class="User-wrapper">
+    <div class="item-module">
+        
+        <div class="User-manager-form layui-col-md11">
+            <div class="item-title">
+                <img src="~/Content/images/icon_project2.png" />
+                <span>项目经理</span>
+            </div>
+            <form class="layui-form" action="~/Users/UsersList" method="post" name="form1" id="form1">
+
+                <div class="layui-form-item inline-show item-filter">
+                    <label class="layui-form-label">姓名</label>
+                    <div class="layui-input-block">
+                        <input type="text" name="username" placeholder="请输入姓名" class="layui-input" value="@username">
+                    </div>
+                </div>
+                <div class="layui-form-item inline-show item-filter">
+                   
+                    <div class="layui-input-block">
+                        <span style="vertical-align:middle">全部</span> @Html.RadioButton("sex", "全部", true, new { @class = "radioStyle" }) 
+                        男 @Html.RadioButton("sex", "0", false, new { @class = "radioStyle" }) 
+                        女 @Html.RadioButton("sex", "1", false, new { @class = "radioStyle" })
+                    </div>
+                </div>
+                <div class="layui-form-item inline-show item-filter">
+                    <label class="layui-form-label">手机号码</label>
+                    <div class="layui-input-block">
+                        <input type="text" name="mobile" placeholder="请输入手机号码" class="layui-input" value="@mobile">
+                    </div>
+                </div>
+                <div class="layui-form-item inline-show item-filter">
+                    <label class="layui-form-label">员工编号</label>
+                    <div class="layui-input-block">
+                        <input type="text" name="managernum" placeholder="请输入员工编号" class="layui-input" value="@managernum">
+                    </div>
+                </div>
+                <div class="layui-form-item inline-show">
+                    <div class="layui-input-block">
+                        <input class="layui-btn" lay-submit lay-filter="formDemo" type="submit" value="搜索" />
+                    </div>
+                </div>
+            </form>
+            
+        </div>
+        <div class="User-manager-table layui-col-md11">
+            
+                <table id="User-manager" class="table-hover gridtable">
+                    <thead>
+                        <tr>
+                            <th>
+                                序号
+                            </th>
+                            <th>
+                                员工编号
+                            </th>
+                            <th>
+                                姓名
+                            </th>
+                            <th>
+                                性别
+                            </th>
+                            <th>
+                                手机号
+                            </th>
+                            <th>
+                                用户身份
+                            </th>
+                            <th>操作</th>
+                        </tr>
+                    </thead>
+                    
+                    @{
+                        int i = 0;
+                        foreach (var item in Model.ManagerModel)
+                        {
+
+                            <tr>
+                                <td>
+                                    @rownum.ToString("00")
+                                </td>
+                                <td>
+                                    @Html.DisplayFor(modelItem => item.ManagerNum)
+                                </td>
+                                <td>
+                                    @Html.DisplayFor(modelItem => item.ManagerName)
+                                </td>
+
+                                <td>
+                                    @if (item.Gender == "0")
+                                    {
+                                        @("男")
+                                    }
+                                    else
+                                    {
+                                        @("女")
+                                    }
+                                </td>
+                                <td>
+                                    @Html.DisplayFor(modelItem => item.Mobile)
+                                </td>
+                                <td>
+                                    @if (item.ManagerType == "M")
+                                    {
+                                        @("项目经理")
+                                    }
+                                    else
+                                    {
+                                        @("客户经理")
+                                    }
+                                </td>
+                                <td>
+                                    @Html.ActionLink("查看", "UserDetail", new { id = item.ManagerId })|
+                                    @Html.ActionLink("编辑", "UserEdit", new { id = item.ManagerId })
+                                </td>
+                            </tr>
+                            rownum++;
+                        }
+                    }
+                </table>
+            <div class="layui-form-item inline-show">
+                <div class="layui-btn layui-btn-normal">@Html.ActionLink("添加", "UserAdd")</div>
+            </div>
+            <div class="shared-pageList">
+                每页 @Model.ManagerModel.PageSize 条记录，共 @Model.ManagerModel.PageCount 页，当前第 @Model.ManagerModel.PageNumber 页
+                @Html.PagedListPager(Model.ManagerModel, page => Url.Action("UsersList", new { page, username, sex, mobile, managernum }))
+            </div>
+                
+
+</div>
+
+    </div>
+
+    <div class="item-module">
+        
+        <div class="User-manager-form layui-col-md11">
+            <div class="item-title">
+                <img src="~/Content/images/icon_project2.png" />
+                <span>学员</span>
+            </div>
+            <form class="layui-form" action="~/Users/UsersList" method="post">
+                <div class="layui-form-item inline-show item-filter">
+                    <label class="layui-form-label">姓名</label>
+                    <div class="layui-input-block">
+                        <input type="text" name="usernames" placeholder="请输入姓名" class="layui-input" value="@usernames">
+                    </div>
+                </div>
+                <div class="layui-form-item inline-show item-filter">
+                    <div class="layui-input-block">
+                        <span style="vertical-align:middle">全部</span> @Html.RadioButton("sexs", "全部", true, new { @class = "radioStyle" })
+                        男 @Html.RadioButton("sexs", "0", false, new { @class = "radioStyle" })
+                        女 @Html.RadioButton("sexs", "1", false, new { @class = "radioStyle" })
+                    </div>
+                </div>
+                <div class="layui-form-item inline-show item-filter">
+                    <label class="layui-form-label">手机号码</label>
+                    <div class="layui-input-block">
+                        <input type="text" name="mobiles" placeholder="请输入手机号码" class="layui-input" value="@mobiles">
+                    </div>
+                </div>
+
+                <div class="layui-form-item inline-show item-filter">
+                    <div class="layui-input-block">
+                        <input class="layui-btn" type="submit" value="搜索" />
+                    </div>
+                </div>
+            </form>
+        </div>
+        <div class="User-manager-table layui-col-md11">
+
+            <table id="User-manager" class="table-hover gridtable">
+                <thead>
+                    <tr>
+                        <th>
+                            序号
+                        </th>
+                        <th>
+                            项目名称
+                        </th>
+                        <th>
+                            姓名
+                        </th>
+                        <th>
+                            性别
+                        </th>
+                        <th>
+                            手机号
+                        </th>
+                        <th>操作</th>
+                    </tr>
+                </thead>
+                
+                @{
+                    foreach (var item in Model.StudentModel)
+                    {
+
+                        <tr>
+                            <td>
+                                @rownums.ToString("00")
+                            </td>
+                            <td>
+                                @Html.DisplayFor(modelItem => item.ProjectName)
+                            </td>
+                            <td>
+                                @Html.DisplayFor(modelItem => item.StudentName)
+                            </td>
+
+                            <td>
+                                @if (item.Gender == "0")
+                                {
+                                    @("男")
+                                }
+                                else
+                                {
+                                    @("女")
+                                }
+                            </td>
+                            <td>
+                                @Html.DisplayFor(modelItem => item.Mobile)
+                            </td>
+                            <td>
+                                @Html.ActionLink("查看", "StudentDetail", new { id = item.StudentId })|
+                                @Html.ActionLink("编辑", "StudentEdit", new { id = item.StudentId })
+                            </td>
+                        </tr>
+                        rownums++;
+                    }
+                }
+            </table>
+
+            <div class="shared-pageList">
+                每页 @Model.StudentModel.PageSize 条记录，共 @Model.StudentModel.PageCount 页，当前第 @Model.StudentModel.PageNumber 页
+                @Html.PagedListPager(Model.StudentModel, pages => Url.Action("UsersList", new { pages, usernames, sexs, mobiles }))
+            </div>
+            
+        </div>
+    </div>
+</div>

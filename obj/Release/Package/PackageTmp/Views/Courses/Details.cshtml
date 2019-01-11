@@ -1,0 +1,108 @@
+﻿@*@model Wenba.Models.Course*@
+
+@model Wenba.ViewModels.CompositeCourse
+
+@{
+    ViewBag.Title = "Details";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>课程详情</h2>
+
+<div>
+    <h4>Course</h4>
+    <hr />
+    <div class="shared-detail">
+        <table class="dl-horizontal">
+            <tr>
+                <th>项目名称</th>
+                <td>@Html.DisplayFor(model => model.Project.ProjectName)</td>
+            </tr>
+            <tr>
+                <th>课程名称</th>
+                <td>@Html.DisplayFor(model => model.Course.CourseName)</td>
+            </tr>
+            <tr>
+                <th>课程编号</th>
+                <td>@Html.DisplayFor(model => model.Course.CourseNum)</td>
+            </tr>
+            <tr>
+                <th>课程描述</th>
+                <td>@Html.DisplayFor(model => model.Course.CourseDesc)</td>
+            </tr>
+            <tr>
+                <th>有效性</th>
+                <td>
+                    @*@Html.DisplayFor(model => model.Course.ActiveFlag)*@
+                    @if (Model.Course.ActiveFlag == "Y")
+            {
+                        @("有效")
+                    }
+                    @if (Model.Course.ActiveFlag == "N")
+            {
+                        @("无效")
+                    }
+                </td>
+            </tr>
+            <tr>
+                <th>任课老师</th>
+                <td>@Html.DisplayFor(model => model.Teacher.ManagerName)</td>
+            </tr>
+            <tr>
+                <th>开课时间</th>
+                <td>@Html.DisplayFor(model => model.Course.StartDate)</td>
+            </tr>
+            <tr>
+                <th>结课时间</th>
+                <td>@Html.DisplayFor(model => model.Course.EndDate)</td>
+            </tr>
+            <tr>
+                <th>课程状态</th>
+                <td>
+                    @*@Html.DisplayFor(model => model.Course.Status)*@
+                    @if (Model.Course.Status == "N         ")
+            {
+                        @("未开课")
+                    }
+                    @if (Model.Course.Status == "S         ")
+            {
+                        @("已开课")
+                    }
+                    @if (Model.Course.Status == "C         ")
+            {
+                        @("已结课")
+                    }
+                </td>
+            </tr>
+            <tr>
+                <th>上课地点</th>
+                <td>@Html.DisplayFor(model => model.Course.Site)</td>
+            </tr>
+            <tr>
+                <th>课程备注</th>
+                <td>@Html.DisplayFor(model => model.Course.Comments)</td>
+            </tr>
+            @*<tr>
+                <th>创建人</th>
+                <td>@Html.DisplayFor(model => model.Course.CreatedBy)</td>
+            </tr>
+            <tr>
+                <th>创建时间</th>
+                <td>@Html.DisplayFor(model => model.Course.CreationDate)</td>
+            </tr>
+            <tr>
+                <th>最近更新人</th>
+                <td>@Html.DisplayFor(model => model.Course.LastUpdatedBy)</td>
+            </tr>
+            <tr>
+                <th>最近更新时间</th>
+                <td>@Html.DisplayFor(model => model.Course.LastUpdatedBy)</td>
+            </tr>*@
+        </table>
+    </div>
+        
+</div>
+<p>
+    @Html.ActionLink("编辑", "Edit", new { id = Model.Course.id }) |
+    @Html.ActionLink("返回列表", "CoursesList")
+</p>

@@ -1,0 +1,270 @@
+﻿@using PagedList.Mvc;
+@model Wenba.Controllers.NotesController.viewModel
+@{
+    ViewBag.Title = "NotesList";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+
+    var username = ViewData["username"];
+    var time = ViewData["time"];
+    var ProjectId = ViewData["ProjectID"];
+    var CourseId = ViewData["CourseId"];
+    int rownum = 1;
+    if (Model.QuestionModel.IsFirstPage)
+    {
+        rownum = 1;
+    }
+    else
+    {
+        rownum = Model.QuestionModel.PageSize * (Model.QuestionModel.PageNumber - 1) + 1;
+    }
+
+
+    var username1 = ViewData["username1"];
+    var time1 = ViewData["time1"];
+    var content1 = ViewData["content1"];
+    int rownum1 = 1;
+    if (Model.NoteModel.IsFirstPage)
+    {
+        rownum1 = 1;
+    }
+    else
+    {
+        rownum1 = Model.NoteModel.PageSize * (Model.NoteModel.PageNumber - 1) + 1;
+    }
+}
+
+<script src="~/Scripts/jquery-1.10.2.js"></script>
+<script src="~/Scripts/jquery-1.10.2.min.js"></script>
+
+<link href="~/Content/PagedList.css" rel="stylesheet" />
+<div class="User-wrapper">
+    <div class="item-module">
+        <div class="User-manager-form layui-col-md11">
+            <div class="item-title">
+                <img src="~/Content/images/icon_project2.png" />
+                <span>问与答</span>
+            </div>
+
+
+            <form action="~/Notes/NotesList" method="post" name="form1" id="form1">
+                <div class="layui-form-item inline-show item-filter">
+                    <label class="layui-form-label">项目名称</label>
+                    <div class="layui-input-block">
+                        @Html.DropDownList("ProjectId", ViewData["ProjectList"] as List<SelectListItem>, "所有项目", new { @onchange = "GetProjectId(this.value)" })
+                    </div>
+                </div>
+
+                <div class="layui-form-item inline-show item-filter">
+                    <label class="layui-form-label">课程名称</label>
+                    <div class="layui-input-block">
+                     @Html.DropDownList("CourseId", ViewData["CouserList"] as List< SelectListItem>, "所有课程", "courseName")
+                        @*@Html.DropDownList("CourseId", new SelectList(Enumerable.Empty<SelectListItem>(), "courseId", "courseName"))*@
+                    </div>
+                </div>
+
+                <div class="layui-form-item inline-show item-filter">
+                    <label class="layui-form-label">姓名</label>
+                    <div class="layui-input-block">
+                        <input type="text" name="username" placeholder="请输入姓名" class="layui-input" value="@username">
+                    </div>
+                </div>
+                @*<div class="layui-form-item inline-show item-filter">
+                    <label class="layui-form-label">课程名称</label>
+                    <div class="layui-input-block">
+                        <input type="text" name="coursename" placeholder="请输入课程名称" class="layui-input" value="@coursename">
+                    </div>
+                </div>*@
+                <div class="layui-form-item inline-show item-filter">
+                    <label class="layui-form-label">发布时间</label>
+                    <div class="layui-input-block">
+                        <input type="text" name="time" placeholder="请输入时间" id="Time" class="layui-input" value="@time">
+                    </div>
+                </div>
+                <div class="layui-form-item inline-show item-filter">
+                    <div class="layui-input-block">
+                        <input class="layui-btn" lay-submit lay-filter="formDemo" type="submit" value="搜索" />
+                    </div>
+                </div>
+            </form>
+        </div>
+        <div class="User-manager-table layui-col-md11">
+
+            <table id="User-manager" class="table-hover gridtable">
+                <tr>
+                    @*<th>
+                        <input type="checkbox" onclick="checkAll(checkall)" id="checkall" name="checkall">
+                    </th>*@
+                    <th style="width:50px">
+                        序号
+                    </th>
+                    <th>
+                        项目名称
+                    </th>
+                    <th>
+                        课程名称
+                    </th>
+                    <th>
+                        提问人
+                    </th>
+                    <th>
+                        问题
+                    </th>
+                    <th>
+                        内容
+                    </th>
+                    <th>
+                        评论
+                    </th>
+                    <th>
+                       发布时间
+                    </th>
+                </tr>
+                @{
+                   
+                    foreach (var item in Model.QuestionModel)
+                    {
+
+                        <tr>
+                            @*<td>
+                                <input type="checkbox" name="info" value="@item.NoteId" onclick="checkAllInfo()">
+                            </td>*@
+                            <td style="width:50px">
+                              @rownum.ToString("00")
+                            </td>
+                            <td class="show-all">@Html.DisplayFor(modelItem => item.ProjectName)</td>
+                            <td class="show-all">@Html.DisplayFor(modelItem => item.CourseName)</td>
+                            <td class="show-all">@Html.DisplayFor(modelItem => item.UserName)</td>
+                            <td class="show-all">@Html.DisplayFor(modelItem => item.QuestionContent)</td>
+                            <td class="show-all">@Html.DisplayFor(modelItem => item.NoteContent)</td>
+                            <td class="show-all">@Html.DisplayFor(modelItem => item.CommentContent)</td>
+                            <td>@Html.DisplayFor(modelItem => item.ReleaseTime)</td>
+                        </tr>
+                        rownum++;
+                    }
+                }
+                
+            </table>
+            @Html.ActionLink("导出", "Export", new { ProjectId, CourseId, username, time }, new { @class = "notes-export" })
+            <div class="shared-pageList">
+               
+                
+                每页 @Model.QuestionModel.PageSize 条记录，共 @Model.QuestionModel.PageCount 页，当前第 @Model.QuestionModel.PageNumber 页
+                @Html.PagedListPager(Model.QuestionModel, page => Url.Action("NotesList", new { page, ProjectId, CourseId, username, time }))
+            </div>
+                
+            </div>
+
+    </div>
+
+    <div class="item-module">
+        <div class="User-manager-form layui-col-md11">
+            <div class="item-title">
+                <img src="~/Content/images/icon_project2.png" />
+                <span>记与思</span>
+            </div>
+
+
+            <form action="~/Notes/NotesList" method="post" name="form1" id="form1">
+                <div class="layui-form-item inline-show item-filter">
+                    <label class="layui-form-label">姓名</label>
+                    <div class="layui-input-block">
+                        <input type="text" name="username1" placeholder="请输入姓名" class="layui-input" value="@username1">
+                    </div>
+                </div>
+                <div class="layui-form-item inline-show item-filter">
+                    <label class="layui-form-label">内容</label>
+                    <div class="layui-input-block">
+                        <input type="text" name="content1" placeholder="请输入内容" class="layui-input" value="@content1">
+                    </div>
+                </div>
+                <div class="layui-form-item inline-show item-filter">
+                    <label class="layui-form-label">发布时间</label>
+                    <div class="layui-input-block">
+                        <input type="text" name="time1" placeholder="请输入时间" id="Time" class="layui-input" value="@time1">
+                    </div>
+                </div>
+                <div class="layui-form-item inline-show item-filter">
+                    <div class="layui-input-block">
+                        <input class="layui-btn" lay-submit lay-filter="formDemo" type="submit" value="搜索" />
+                    </div>
+                </div>
+            </form>
+        </div>
+        <div class="User-manager-table layui-col-md11">
+
+            <table id="User-manager" class="table-hover gridtable">
+                <tr>
+                    @*<th>
+                            <input type="checkbox" onclick="checkAll(checkall)" id="checkall" name="checkall">
+                        </th>*@
+                    <th style="width:50px">
+                        序号
+                    </th>
+                    <th>
+                        记录人
+                    </th>
+                    <th>
+                        内容
+                    </th>
+                    <th>
+                        评论
+                    </th>
+                    <th>
+                        发布时间
+                    </th>
+                </tr>
+                @{
+
+                    foreach (var item in Model.NoteModel)
+                    {
+
+                        <tr>
+                            @*<td>
+                                    <input type="checkbox" name="info" value="@item.NoteId" onclick="checkAllInfo()">
+                                </td>*@
+                            <td style="width:50px">
+                                @rownum1.ToString("00")
+                            </td>
+                            <td class="show-all">@Html.DisplayFor(modelItem => item.UserName)</td>
+                            <td class="show-all">@Html.DisplayFor(modelItem => item.NoteContent)</td>
+                            <td class="show-all">@Html.DisplayFor(modelItem => item.CommentContent)</td>
+                            <td>@Html.DisplayFor(modelItem => item.ReleaseTime)</td>
+                        </tr>
+                        rownum1++;
+                    }
+                }
+
+            </table>
+            <div class="shared-pageList">
+                @Html.ActionLink("导出", "Exports", new { username1, time1, content1 })
+                每页 @Model.NoteModel.PageSize 条记录，共 @Model.NoteModel.PageCount 页，当前第 @Model.NoteModel.PageNumber 页
+                @Html.PagedListPager(Model.NoteModel, pages => Url.Action("NotesList", new { pages, username1, time1,content1 }))
+            </div>
+
+        </div>
+
+    </div>
+
+</div>
+<script>
+    //获取项目 再给子下拉框赋值
+    function GetProjectId(id) {
+        if (id == null) {
+            return;
+        }
+        else {
+            $("#CourseId").empty();
+            $.ajax({
+                url: "/Questions/BindCourse/" + id,
+                type: "post",
+
+                success: function (data) {
+                    $("#CourseId").append("<option value=''>所有课程</option>")
+                    $(data).each(function () {
+                        $("#CourseId").append("<option value='" + this.Value + "'>" + this.Text + "</option>")
+                    })
+                }
+            })
+        }
+    }
+</script>

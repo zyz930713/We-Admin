@@ -1,0 +1,10 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<parameters>
+  <parameter name="IIS Web Application Name" description="" value="Wenba" tags="IisApp">
+    <parameterEntry kind="ProviderPath" scope="IisApp" match="^D:\\zyz2018\\项目\\company\\问吧\\Wenba\\obj\\Release\\Package\\PackageTmp$" />
+    <parameterEntry kind="ProviderPath" scope="setAcl" match="^D:\\zyz2018\\项目\\company\\问吧\\Wenba\\obj\\Release\\Package\\PackageTmp$" />
+  </parameter>
+  <parameter name="WenbaDBContext-Web.config Connection String" description="WenbaDBContext Connection String used in web.config by the application to access the database." value="metadata=res://*/Models.Wenba.csdl|res://*/Models.Wenba.ssdl|res://*/Models.Wenba.msl;provider=System.Data.SqlClient;provider connection string=&quot;data source=www.chiocloud.com;initial catalog=WenXueDB;user id=wenxue;password=wenxue@2018;MultipleActiveResultSets=True;App=EntityFramework&quot;" tags="SqlConnectionString">
+    <parameterEntry kind="XmlFile" scope="D:\\zyz2018\\项目\\company\\问吧\\Wenba\\obj\\Release\\Package\\PackageTmp\\Web\.config$" match="/configuration/connectionStrings/add[@name='WenbaDBContext']/@connectionString" />
+  </parameter>
+</parameters>

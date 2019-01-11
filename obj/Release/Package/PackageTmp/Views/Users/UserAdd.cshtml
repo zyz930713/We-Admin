@@ -1,0 +1,104 @@
+﻿@model Wenba.Models.Manager
+
+@{
+    ViewBag.Title = "UserAdd";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>添加项目经理</h2>
+
+@using (Html.BeginForm()) 
+{
+    @Html.AntiForgeryToken()
+    
+    <div class="form-horizontal">
+      <div class="layui-form">
+          
+          <div class="layui-form-item">
+              <label class="layui-form-label">用户姓名</label>
+              <div class="layui-input-block">
+                  @Html.EditorFor(model => model.ManagerName, new { htmlAttributes = new { @class = "form-control layui-input" } })
+                  @Html.ValidationMessageFor(model => model.ManagerName, "", new { @class = "text-danger" })
+              </div>
+          </div>
+
+
+          <div class="layui-form-item">
+              <label class="layui-form-label">员工编号</label>
+              <div class="layui-input-block">
+                  @Html.EditorFor(model => model.ManagerNum, new { htmlAttributes = new { @class = "form-control layui-input" } })
+                @Html.ValidationMessageFor(model => model.ManagerNum, "", new { @class = "text-danger" })
+              </div>
+          </div>
+
+          <div class="layui-form-item">
+              <label class="layui-form-label">用户性别</label>
+              <div class="layui-input-block">
+                 @Html.RadioButtonFor(model => model.Gender, "0", new { @class = "radioStyle", @name = "Gender", @checked = "checked" })男
+                @Html.RadioButtonFor(model => model.Gender, "1", new { @class = "radioStyle", @name = "Gender" })女
+              </div>
+          </div>
+
+
+          <div class="layui-form-item">
+              <label class="layui-form-label">出生日期</label>
+              <div class="layui-input-block">
+                @Html.EditorFor(model => model.Birthday, new { htmlAttributes = new { @type = "text", @class = "layui-input" } })
+                @Html.ValidationMessageFor(model => model.Birthday, "", new { @class = "text" })
+              </div>
+          </div>
+
+
+          <div class="layui-form-item">
+              <label class="layui-form-label">雇佣日期</label>
+              <div class="layui-input-block">
+                @Html.EditorFor(model => model.HireDate, new { htmlAttributes = new { @type = "text", @class = "layui-input" } })
+                @Html.ValidationMessageFor(model => model.HireDate, "", new { @class = "text" })
+              </div>
+          </div>
+
+     
+          <div class="layui-form-item">
+              <label class="layui-form-label">手机号</label>
+              <div class="layui-input-block">
+                  @Html.EditorFor(model => model.Mobile, new { htmlAttributes = new { @class = "form-control layui-input" } })
+                  @Html.ValidationMessageFor(model => model.Mobile, "", new { @class = "text-danger" })
+              </div>
+          </div>
+
+
+          <div class="layui-form-item">
+              <label class="layui-form-label">用户身份</label>
+              <div class="layui-input-block">
+                  @Html.RadioButtonFor(model => model.ManagerType, "M", new { @class = "radioStyle", @name = "ManagerType", @checked = "checked" })项目经理
+                  @Html.RadioButtonFor(model => model.ManagerType, "C", new { @class = "radioStyle", @name = "ManagerType" })客户经理
+              </div>
+          </div>
+
+
+
+          <div class="layui-form-item">
+              <label class="layui-form-label">备注</label>
+              <div class="layui-input-block">
+                  @Html.EditorFor(model => model.Comments, new { htmlAttributes = new { @class = "form-control layui-input" } })
+                  @Html.ValidationMessageFor(model => model.Comments, "", new { @class = "text-danger" })
+              </div>
+          </div>
+
+          <div class="layui-form-item">
+              <div>
+                  <input id="managerAdd" type="submit" class="layui-btn layui-btn-normal" value="提交" />
+              </div>
+          </div>
+
+          <div>
+              <label>@ViewBag.ErrorMsg</label>
+          </div>
+      </div>
+        
+    </div>
+}
+
+<div>
+    @Html.ActionLink("返回列表", "UsersList")
+</div>

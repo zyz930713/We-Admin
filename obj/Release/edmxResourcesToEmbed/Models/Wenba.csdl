@@ -1,0 +1,318 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="WenbaDBModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+  <EntityType Name="Collection">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="UserId" Type="Int32" />
+    <Property Name="NoteId" Type="Int32" />
+    <Property Name="CommentId" Type="Int32" />
+    <Property Name="CreationDate" Type="DateTime" Precision="3" />
+    <Property Name="CreatedBy" Type="Int32" />
+    <Property Name="LastUpdateDate" Type="DateTime" Precision="3" />
+    <Property Name="LastUpdatedBy" Type="Int32" />
+  </EntityType>
+  <EntityType Name="Comment">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="NoteId" Type="Int32" Nullable="false" />
+    <Property Name="Comments" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="LikeCount" Type="Int32" />
+    <Property Name="PublicFlag" Type="String" MaxLength="1" FixedLength="true" Unicode="false" Nullable="false" />
+    <Property Name="CommentedBy" Type="Int32" Nullable="false" />
+    <Property Name="CommentedType" Type="String" MaxLength="1" FixedLength="true" Unicode="false" Nullable="false" />
+    <Property Name="Attribute1" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="Attribute2" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="Attribute3" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="Attribute4" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="Attribute5" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="Attribute6" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="Attribute7" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="Attribute8" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="Attribute9" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="Attribute10" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="CreatedBy" Type="Int32" Nullable="false" />
+    <Property Name="CreationDate" Type="DateTime" Nullable="false" Precision="3" />
+    <Property Name="LastUpdateDate" Type="DateTime" Nullable="false" Precision="3" />
+    <Property Name="LastUpdatedBy" Type="Int32" Nullable="false" />
+  </EntityType>
+  <EntityType Name="Label">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="LabelType" Type="String" MaxLength="10" FixedLength="true" Unicode="false" Nullable="false" />
+    <Property Name="Label1" Type="String" MaxLength="10" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="Attribute1" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="Attribute2" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="Attribute3" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="Attribute4" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="Attribute5" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="Attribute6" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="Attribute7" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="Attribute8" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="Attribute9" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="Attribute10" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="CreatedBy" Type="Int32" Nullable="false" />
+    <Property Name="CreationDate" Type="DateTime" Nullable="false" Precision="3" />
+    <Property Name="LastUpdateDate" Type="DateTime" Nullable="false" Precision="3" />
+    <Property Name="LastUpdatedBy" Type="Int32" Nullable="false" />
+  </EntityType>
+  <EntityType Name="Manager">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="ManagerName" Type="String" MaxLength="15" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="ManagerNum" Type="String" MaxLength="15" FixedLength="false" Unicode="false" />
+    <Property Name="Gender" Type="String" MaxLength="1" FixedLength="false" Unicode="false" />
+    <Property Name="Birthday" Type="DateTime" Precision="0" />
+    <Property Name="HireDate" Type="DateTime" Precision="0" />
+    <Property Name="ActiveFlag" Type="String" MaxLength="1" FixedLength="true" Unicode="false" Nullable="false" />
+    <Property Name="Mobile" Type="String" MaxLength="15" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="OpenId" Type="String" MaxLength="120" FixedLength="false" Unicode="false" />
+    <Property Name="ManagerType" Type="String" MaxLength="1" FixedLength="true" Unicode="false" Nullable="false" />
+    <Property Name="HeadImage" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="Comments" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="Attribute1" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="Attribute2" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="Attribute3" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="Attribute4" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="Attribute5" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="Attribute6" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="Attribute7" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="Attribute8" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="Attribute9" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="Attribute10" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="CreatedBy" Type="Int32" Nullable="false" />
+    <Property Name="CreationDate" Type="DateTime" Nullable="false" Precision="3" />
+    <Property Name="LastUpdatedBy" Type="Int32" Nullable="false" />
+    <Property Name="LastUpdateDate" Type="DateTime" Nullable="false" Precision="3" />
+  </EntityType>
+  <EntityType Name="Note">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="UserId" Type="Int32" Nullable="false" />
+    <Property Name="CourseId" Type="Int32" />
+    <Property Name="LikeNum" Type="Int32" />
+    <Property Name="QuestionId" Type="Int32" />
+    <Property Name="Notes" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="PublicFlag" Type="String" MaxLength="1" FixedLength="true" Unicode="false" Nullable="false" />
+    <Property Name="Attribute1" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="Attribute2" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="Attribute3" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="Attribute4" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="Attribute5" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="Attribute6" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="Attribute7" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="Attribute8" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="Attribute9" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="Attribute10" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="CreatedBy" Type="Int32" Nullable="false" />
+    <Property Name="CreationDate" Type="DateTime" Nullable="false" Precision="3" />
+    <Property Name="LastUpdateDate" Type="DateTime" Nullable="false" Precision="3" />
+    <Property Name="LastUpdatedBy" Type="Int32" Nullable="false" />
+  </EntityType>
+  <EntityType Name="Project">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="ProjectName" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="ProjectNum" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="StartDate" Type="DateTime" Nullable="false" Precision="3" />
+    <Property Name="CustomerName" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+    <Property Name="EndDate" Type="DateTime" Precision="3" />
+    <Property Name="ManagerId" Type="Int32" Nullable="false" />
+    <Property Name="QRCode" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+    <Property Name="Status" Type="String" MaxLength="10" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="Comments" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="Attribute1" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="Attribute2" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="Attribute3" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="Attribute4" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="Attribute5" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="Attribute6" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="Attribute7" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="Attribute8" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="Attribute9" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="Attribute10" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="CreatedBy" Type="Int32" Nullable="false" />
+    <Property Name="CreationDate" Type="DateTime" Nullable="false" Precision="3" />
+    <Property Name="LastUpdatedBy" Type="Int32" Nullable="false" />
+    <Property Name="LastUpdateDate" Type="DateTime" Nullable="false" Precision="3" />
+    <Property Name="CustManagerId" Type="Int32" Nullable="false" />
+  </EntityType>
+  <EntityType Name="Question">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="QuestionTitle" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+    <Property Name="QuestionDesc" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="QuestionType" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="QuestionNum" Type="String" MaxLength="3" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="CourseId" Type="Int32" Nullable="false" />
+    <Property Name="Comments" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="CreatedBy" Type="Int32" Nullable="false" />
+    <Property Name="CreationDate" Type="DateTime" Nullable="false" Precision="3" />
+    <Property Name="LastUpdateDate" Type="DateTime" Nullable="false" Precision="3" />
+    <Property Name="LastUpdatedBy" Type="Int32" Nullable="false" />
+    <Property Name="Attribute1" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="Attribute2" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="Attribute3" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="Attribute4" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="Attribute5" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="Attribute6" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="Attribute7" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="Attribute8" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="Attribute9" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="Attribute10" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="Status" Type="String" MaxLength="10" FixedLength="false" Unicode="false" />
+  </EntityType>
+  <EntityType Name="StudentAssgin">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="StudentId" Type="Int32" Nullable="false" />
+    <Property Name="ActiveFlag" Type="String" MaxLength="1" FixedLength="true" Unicode="false" />
+    <Property Name="ProjectId" Type="Int32" Nullable="false" />
+    <Property Name="Attribute1" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="Attribute2" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="Attribute3" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="Attribute4" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="Attribute5" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="Attribute6" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="Attribute7" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="Attribute8" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="Attribute9" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="Attribute10" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="CreatedBy" Type="Int32" Nullable="false" />
+    <Property Name="CreationDate" Type="DateTime" Nullable="false" Precision="3" />
+    <Property Name="LastUpdateDate" Type="DateTime" Nullable="false" Precision="3" />
+    <Property Name="LastUpdatedBy" Type="Int32" Nullable="false" />
+  </EntityType>
+  <EntityType Name="Student">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="StudentName" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="StudentNum" Type="String" MaxLength="15" FixedLength="false" Unicode="false" />
+    <Property Name="Gender" Type="String" MaxLength="1" FixedLength="false" Unicode="false" />
+    <Property Name="Birthday" Type="DateTime" Precision="0" />
+    <Property Name="Collegue" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="Nationality" Type="String" MaxLength="15" FixedLength="false" Unicode="true" />
+    <Property Name="ActiveFlag" Type="String" MaxLength="1" FixedLength="true" Unicode="false" Nullable="false" />
+    <Property Name="HeadImage" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+    <Property Name="Mobile" Type="String" MaxLength="15" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="OpenId" Type="String" MaxLength="120" FixedLength="false" Unicode="false" />
+    <Property Name="Comments" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="Attribute1" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="Attribute2" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="Attribute3" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="Attribute4" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="Attribute5" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="Attribute6" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="Attribute7" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="Attribute8" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="Attribute9" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="Attribute10" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="CreatedBy" Type="Int32" Nullable="false" />
+    <Property Name="CreationDate" Type="DateTime" Nullable="false" Precision="3" />
+    <Property Name="LastUpdatedBy" Type="Int32" />
+    <Property Name="LastUpdateDate" Type="DateTime" Precision="3" />
+  </EntityType>
+  <EntityType Name="User">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="UserName" Type="String" MaxLength="15" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="Comments" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="Password" Type="String" MaxLength="30" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="StartDate" Type="DateTime" Nullable="false" Precision="3" />
+    <Property Name="EndDate" Type="DateTime" Precision="3" />
+    <Property Name="Role" Type="String" MaxLength="1" FixedLength="true" Unicode="false" Nullable="false" />
+    <Property Name="PersonId" Type="Int32" Nullable="false" />
+    <Property Name="CreatedBy" Type="Int32" Nullable="false" />
+    <Property Name="CreationDate" Type="DateTime" Nullable="false" Precision="3" />
+    <Property Name="LastUpdateDate" Type="DateTime" Nullable="false" Precision="3" />
+    <Property Name="LastUpdatedBy" Type="Int32" Nullable="false" />
+    <Property Name="Attribute1" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="Attribute2" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="Attribute3" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="Attribute4" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="Attribute5" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="Attribute6" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="Attribute7" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="Attribute8" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="Attribute9" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="Attribute10" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+  </EntityType>
+  <EntityContainer Name="WenbaDBContext" annotation:LazyLoadingEnabled="true">
+    <EntitySet Name="Collections" EntityType="Self.Collection" />
+    <EntitySet Name="Comments" EntityType="Self.Comment" />
+    <EntitySet Name="Labels" EntityType="Self.Label" />
+    <EntitySet Name="Managers" EntityType="Self.Manager" />
+    <EntitySet Name="Notes" EntityType="Self.Note" />
+    <EntitySet Name="Projects" EntityType="Self.Project" />
+    <EntitySet Name="Questions" EntityType="Self.Question" />
+    <EntitySet Name="StudentAssgins" EntityType="Self.StudentAssgin" />
+    <EntitySet Name="Students" EntityType="Self.Student" />
+    <EntitySet Name="Users" EntityType="Self.User" />
+    <EntitySet Name="Courses" EntityType="WenbaDBModel.Course" />
+    <EntitySet Name="Dictionaries" EntityType="WenbaDBModel.Dictionary" />
+  </EntityContainer>
+  <EntityType Name="Course">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="ProjectId" Type="Int32" Nullable="false" />
+    <Property Name="CourseName" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="CourseNum" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="CourseDesc" Type="String" MaxLength="500" FixedLength="false" Unicode="true" />
+    <Property Name="ActiveFlag" Type="String" Nullable="false" MaxLength="1" FixedLength="true" Unicode="false" />
+    <Property Name="TeacherId" Type="Int32" Nullable="false" />
+    <Property Name="EndDate" Type="DateTime" Precision="3" />
+    <Property Name="StartDate" Type="DateTime" Precision="3" />
+    <Property Name="Status" Type="String" MaxLength="10" FixedLength="true" Unicode="false" />
+    <Property Name="Site" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+    <Property Name="Comments" Type="String" MaxLength="20" FixedLength="false" Unicode="true" />
+    <Property Name="Attribute1" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="Attribute2" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="Attribute3" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="Attribute4" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="Attribute5" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="Attribute6" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="Attribute7" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="Attribute8" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="Attribute9" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="Attribute10" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="CreatedBy" Type="Int32" Nullable="false" />
+    <Property Name="CreationDate" Type="DateTime" Nullable="false" Precision="3" />
+    <Property Name="LastUpdatedBy" Type="Int32" Nullable="false" />
+    <Property Name="LastUpdatedate" Type="DateTime" Nullable="false" Precision="3" />
+  </EntityType>
+  <EntityType Name="Dictionary">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Enabled" Type="String" MaxLength="1" FixedLength="true" Unicode="false" />
+    <Property Name="CreatedBy" Type="Int32" />
+    <Property Name="CreationDate" Type="DateTime" Precision="3" />
+    <Property Name="LastUpdateDate" Type="DateTime" Precision="3" />
+    <Property Name="LastUpdatedBy" Type="Int32" />
+    <Property Name="TYPE" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="CODE" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="VALUE" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+  </EntityType>
+</Schema>

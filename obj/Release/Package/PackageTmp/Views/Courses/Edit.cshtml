@@ -1,0 +1,167 @@
+﻿@model Wenba.Models.Course
+
+@{
+    ViewBag.Title = "Edit";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>编辑</h2>
+
+
+@using (Html.BeginForm())
+{
+    @Html.AntiForgeryToken()
+
+    <div class="form-horizontal layui-form">
+        <h4>Course</h4>
+        <hr />
+        @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+        @Html.HiddenFor(model => model.id)
+
+
+        <div class="layui-form-item">
+            <label class="layui-form-label">项目名称</label>
+            <div class="layui-input-block">
+                @Html.DropDownList("ProjectId", ViewData["ProjectList"] as List<SelectListItem>, "--请选择--")
+                @Html.ValidationMessageFor(model => model.ProjectId, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <div class="layui-form-item">
+            <label class="layui-form-label">课程名称</label>
+            <div class="layui-input-block">
+                @Html.EditorFor(model => model.CourseName, new { htmlAttributes = new { @class = "form-control layui-input" } })
+                @Html.ValidationMessageFor(model => model.CourseName, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <div class="layui-form-item">
+            <label class="layui-form-label">课程编号</label>
+            <div class="layui-input-block">
+                @Html.EditorFor(model => model.CourseNum, new { htmlAttributes = new { @class = "form-control layui-input" } })
+                @Html.ValidationMessageFor(model => model.CourseNum, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+
+        <div class="layui-form-item">
+            <label class="layui-form-label">课程描述</label>
+            <div class="layui-input-block">
+                @Html.EditorFor(model => model.CourseDesc, new { htmlAttributes = new { @class = "form-control layui-input" } })
+                @Html.ValidationMessageFor(model => model.CourseDesc, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <div class="layui-form-item">
+            <label class="layui-form-label">有效性</label>
+            <div class="layui-input-block">
+                @*@Html.EditorFor(model => model.ActiveFlag, new { htmlAttributes = new { @class = "form-control" } })*@
+                @Html.DropDownList("ActiveFlag", new List<SelectListItem>(){ new SelectListItem() { Text="有效",Value="Y"}
+                                                                            ,new SelectListItem() { Text="无效",Value="N"} })
+                @Html.ValidationMessageFor(model => model.ActiveFlag, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <div class="layui-form-item">
+            <label class="layui-form-label">任课老师</label>
+            <div class="layui-input-block">
+                @*@Html.EditorFor(model => model.TeacherId, new { htmlAttributes = new { @class = "form-control" } })*@
+                @Html.DropDownList("TeacherId", ViewData["TeacherList"] as List<SelectListItem>)
+                @Html.ValidationMessageFor(model => model.TeacherId, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        
+        
+        <div class="layui-form-item">
+            <label class="layui-form-label">开课时间</label>
+            <div class="layui-input-block">
+               @{
+                   var startDate = Model.StartDate.GetValueOrDefault().ToString("yyyy-MM-dd HH:mm:ss");
+            }
+            <input id="courseStart" class="layui-input" value="@startDate" name="StartDate" type="text" />
+            </div>
+        </div>
+
+
+        <div class="layui-form-item">
+            <label class="layui-form-label">结课时间</label>
+            <div class="layui-input-block">
+                @{
+                    var endDate = Model.EndDate.GetValueOrDefault().ToString("yyyy-MM-dd HH:mm:ss");
+                }
+                <input id="courseEnd" class="layui-input" value="@endDate" name="EndDate" type="text" />
+            </div>
+        </div>
+
+
+
+        <div class="layui-form-item">
+            <label class="layui-form-label">课程状态</label>
+            <div class="layui-input-block">
+                @*@Html.EditorFor(model => model.Status, new { htmlAttributes = new { @class = "form-control" } })*@
+                @Html.DropDownList("Status", new List<SelectListItem>(){ new SelectListItem() { Text="未开课",Value="N         "}
+                                                                        ,new SelectListItem() { Text="已开课",Value="S         "}
+                                                                        ,new SelectListItem() { Text="已结课",Value="C         "} })
+                @Html.ValidationMessageFor(model => model.Status, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <div class="layui-form-item">
+            <label class="layui-form-label">上课地点</label>
+            <div class="layui-input-block">
+                @Html.EditorFor(model => model.Site, new { htmlAttributes = new { @class = "form-control layui-input" } })
+                @Html.ValidationMessageFor(model => model.Site, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+
+        <div class="layui-form-item">
+            <label class="layui-form-label">备注</label>
+            <div class="layui-input-block">
+                @Html.EditorFor(model => model.Comments, new { htmlAttributes = new { @class = "form-control layui-textarea" } })
+                @Html.ValidationMessageFor(model => model.Comments, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+
+        @*<div class="layui-form-item">
+                <label class="layui-form-label">最近更新人</label>
+                <div class="layui-input-block">
+                    @Html.EditorFor(model => model.LastUpdatedBy, new { htmlAttributes = new { @class = "form-control layui-input" } })
+                    @Html.ValidationMessageFor(model => model.LastUpdatedBy, "", new { @class = "text-danger" })
+                </div>
+            </div>
+
+            <div class="layui-form-item">
+                <label class="layui-form-label">最近更新时间</label>
+                <div class="layui-input-block">
+                    @Html.EditorFor(model => model.LastUpdatedate, new { htmlAttributes = new { @class = "form-control layui-input" } })
+                    @Html.ValidationMessageFor(model => model.LastUpdatedate, "", new { @class = "text-danger" })
+                </div>
+            </div>*@
+
+
+
+        <div class="layui-form-item">
+
+            <div class="layui-input-block">
+                <input type="submit" value="提交" class="layui-btn layui-btn-normal" />
+            </div>
+
+            <div>
+                <label>@ViewBag.ErrorMsg</label>
+            </div>
+        </div>
+
+
+    </div>
+}
+
+<div>
+    @Html.ActionLink("返回列表", "CoursesList")
+</div>
+
+<script src="~/Scripts/jquery-1.10.2.min.js"></script>
+<script src="~/Scripts/jquery.validate.min.js"></script>
+<script src="~/Scripts/jquery.validate.unobtrusive.min.js"></script>

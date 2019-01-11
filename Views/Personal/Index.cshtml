@@ -1,0 +1,164 @@
+﻿@model Wenba.ViewModels.CompositePersonal
+
+@{
+    Layout = null;
+
+}
+
+<style>
+    .person-wrapper {
+    width:70%;
+    margin:0 auto;
+}
+        .person-wrapper table th {
+            width:40px;
+            font-size:16px;
+            color:#333;
+            padding-bottom:20px;
+        }
+        .person-wrapper table td {
+            padding-bottom:20px;
+            padding-left:12px;
+        }
+        .person-wrapper table td input{
+            width:80%;
+            height:28px;
+            padding:6px;
+            border:none;
+        }
+        .person-wrapper .subBtn {
+            
+            width: 50px;
+            height: 30px;
+            background-color: #009688;
+            border: none;
+            color: #fff;
+        }
+        .person-wrapper .upBtn {
+            margin-top:6px;
+            position:relative;
+            z-index:200;  
+            width: 80px;
+            height: 30px;
+            background-color: #009688;
+            border: none;
+            color: #fff;
+        }
+        .person-wrapper .filepath {
+            position:absolute;
+            opacity:0;
+            z-index:1000;  
+        }
+</style>
+
+
+<body>
+    
+    @using (Html.BeginForm("Save", "Personal", FormMethod.Post, new { enctype = "multipart/form-data" }))
+    {
+        <div class="person-wrapper">
+            <table>
+                <tr hidden>
+                    <td><input id="Text1" name="ManagerId" type="text" value="@Html.DisplayFor(model=>model.Manager.id)" hidden /></td>
+                    <td><input id="Text1" name="StudentId" type="text" value="@Html.DisplayFor(model=>model.Student.id)" hidden /></td>
+                    <td></td>
+                </tr>
+                <tr>
+                    <th>头像</th>
+                    <td style="position:relative">
+                        <form action="" enctype="multipart/form-data">
+
+                            @if (Model.User.Role.Contains("M")|| Model.User.Role.Contains("A"))
+                            { <img src="@Html.DisplayFor(model=>model.Manager.HeadImage)" id="show" width="50" name="m_headimage"><br />}
+                            @if (Model.User.Role.Contains("S"))
+                            { <img src="@Html.DisplayFor(model=>model.Student.HeadImage)" id="show" width="50" name="s_headimage"><br />}
+
+                            <input id="file" class="filepath" onchange="changepic(this)" type="file" name="file">
+                            <button class="upBtn">点击上传</button>
+                        </form>
+
+
+
+                    </td>
+                </tr>
+                <tr>
+                    <th>姓名</th>
+                    @if (Model.User.Role.Contains("M")|| Model.User.Role.Contains("A"))
+                    {
+                        <td><input id="Text1" name="ManagerName" type="text" value="@Html.DisplayFor(model => model.Manager.ManagerName)" /></td>}
+                    @if (Model.User.Role.Contains("S"))
+                {
+                        <td><input id="Text1" name="StudentName" type="text" value="@Html.DisplayFor(model => model.Student.StudentName)" /></td>}
+
+                </tr>
+
+                @*<tr>
+                <td>用户密码</td>
+                <td><input id="Text1" name="Password" type="text" value="@Html.DisplayFor(model=>model.User.Password)" /></td>
+            </tr>*@
+
+                <tr>
+                    <th>号码</th>
+                    @if (Model.User.Role.Contains("M")|| Model.User.Role.Contains("A"))
+                    {
+                        <td><input id="Text1" name="m_Mobile" type="text" value="@Html.DisplayFor(model=>model.Manager.Mobile)" /></td>
+                    }
+                    @if (Model.User.Role.Contains("S"))
+                {
+                        <td><input id="Text1" name="s_Mobile" type="text" value="@Html.DisplayFor(model=>model.Student.Mobile)" /></td>
+                    }
+
+                </tr>
+
+
+                <tr>
+                    <th>备注</th>
+                    @if (Model.User.Role.Contains("M")|| Model.User.Role.Contains("A"))
+                    {
+                        <td>
+                            <input id="Text1" name="m_Comments" type="text" value="@Html.DisplayFor(model=>model.Manager.Comments)" />
+                        </td>
+                    }
+                    @if (Model.User.Role.Contains("S"))
+                {
+                        <td>
+                            <input id="Text1" name="s_Comments" type="text" value="@Html.DisplayFor(model=>model.Student.Comments)" />
+                        </td>
+                    }
+
+                </tr>
+
+
+            </table>
+            <button type="submit" class="subBtn btn btn-default">提交</button>
+        </div>
+        
+
+    }
+</body>
+
+
+
+<script>
+
+    function changepic(obj) {
+        //console.log(obj.files[0]);//这里可以获取上传文件的name
+        var newsrc = getObjectURL(obj.files[0]);
+        document.getElementById('show').src = newsrc;
+        document.getElementById("hiddenimg").value = newsrc;
+    }
+    //建立一個可存取到該file的url
+    function getObjectURL(file) {
+        var url = null;
+        // 下面函数执行的效果是一样的，只是需要针对不同的浏览器执行不同的 js 函数而已
+        if (window.createObjectURL != undefined) { // basic
+            url = window.createObjectURL(file);
+        } else if (window.URL != undefined) { // mozilla(firefox)
+            url = window.URL.createObjectURL(file);
+        } else if (window.webkitURL != undefined) { // webkit or chrome
+            url = window.webkitURL.createObjectURL(file);
+        }
+        return url;
+    }
+</script>
+

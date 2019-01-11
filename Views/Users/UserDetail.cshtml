@@ -1,0 +1,81 @@
+﻿@model Wenba.Controllers.UsersController.Managerlist
+@{
+    ViewBag.Title = "UserDetail";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title></title>
+</head>
+<body>
+
+    <div class="shared-detail">
+        <table>
+            <tr>
+                <th>用户头像</th>
+                <td>
+                    <img style="width:60px" src="@Html.DisplayFor(model=>model.HeadImage)" alt="" />
+                </td>
+            </tr>
+            <tr>
+                <th>用户姓名</th>
+                <td>@Html.DisplayFor(model => model.ManagerName)</td>
+            </tr>
+            <tr>
+                <th>员工编号</th>
+                <td>@Html.DisplayFor(model => model.ManagerNum)</td>
+            </tr>
+            <tr>
+                <th>用户密码</th>
+                <td>@Html.DisplayFor(model => model.Password)</td>
+            </tr>
+            <tr>
+                <th>用户性别</th>
+                <td>
+                    @Html.DisplayFor(model => model.Gender)
+                </td>
+            </tr>
+            <tr>
+                <th>手机号码</th>
+                <td>@Html.DisplayFor(model => model.Mobile)</td>
+            </tr>
+            <tr>
+                <th>出生日期</th>
+                <td>@Html.DisplayFor(model => model.Birthday)</td>
+            </tr>
+            <tr>
+                <th>雇佣日期</th>
+                <td>@Html.DisplayFor(model => model.HireDate)</td>
+            </tr>
+            <tr>
+                <th>备注</th>
+                <td>
+                    <textarea id="Text1" name="Comments" type="text" value="@Html.DisplayFor(model=>model.Comments)" readonly></textarea>
+                </td>
+            </tr>
+            <tr>
+                <th>用户身份</th>
+                <td>
+                    @Html.DisplayFor(model => model.ManagerType)
+                </td>
+            </tr>
+            <tr>
+                <th>添加时间</th>
+                <td>@Html.DisplayFor(model => model.StartDate)</td>
+            </tr>
+
+        </table>
+        <div>
+            @Html.ActionLink("编辑", "UserEdit", new { id = Model.ManagerId })
+            @Html.ActionLink("返回列表", "UsersList")
+        </div>
+       
+    </div>
+    
+</body>
+</html>
+

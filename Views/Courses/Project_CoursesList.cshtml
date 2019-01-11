@@ -1,0 +1,80 @@
+﻿@model List<Wenba.ViewModels.CompositeCourse>
+
+@{
+    ViewBag.Title = "Project_CoursesList";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>相关课程列表</h2>
+
+<table class="table-hover gridtable">
+    <tr>
+        <th>
+            课程编号
+        </th>
+        <th>
+            项目名称
+        </th>
+        <th>
+            课程名称
+        </th>
+        <th>
+            任课讲师
+        </th>
+        <th>
+            开始时间
+        </th>
+        <th>
+            结束时间
+        </th>
+        <th>
+            状态
+        </th>
+        <th>
+            上课地点
+        </th>
+    </tr>
+
+    @foreach (var item in Model)
+    {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.Course.CourseNum)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Project.ProjectName)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Course.CourseName)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Teacher.ManagerName)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Course.StartDate)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Course.EndDate)
+            </td>
+            <td>
+                @if (item.Course.Status == "N         ")
+                {
+                    @("未开课")
+                }
+                @if (item.Course.Status == "S         ")
+                {
+                    @("已开课")
+                }
+                @if (item.Course.Status == "C         ")
+                {
+                    @("已结课")
+                }
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Course.Site)
+            </td>
+
+        </tr>
+    }
+
+</table>

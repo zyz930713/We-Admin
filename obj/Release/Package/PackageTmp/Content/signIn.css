@@ -1,0 +1,134 @@
+﻿body {
+    background-color:#eee!important;
+}
+.bg-container {
+    display:flex;
+    min-width:100%;
+    height:50vh;
+    background:url("images/loginBanner.png")no-repeat;
+    background-size:cover;
+}
+.bg-container .login-logo-wrap {
+    width:244px;
+    height:102px;  
+    margin:0 auto;
+    padding-top:12vh;      
+}
+.login-input-wrapper {
+    position:relative;
+    z-index:10;
+    width:510px;
+    height:390px;
+    background-color:#fff;
+    margin:0 auto;  
+    opacity:0.3;
+    margin-top:-120px;
+    border-radius:10px;
+    box-shadow: 0 4px 8px rgba(0,0,0,.20);
+}
+.login-content-wrapper {
+    position:relative;
+    z-index:100;
+    margin-top:-340px;
+}
+.form-signin {
+  max-width: 330px;
+  padding: 12px;
+  margin: 0 auto;
+}
+.login-logo-wrap .form-signin-heading{
+    text-align:center;
+    font-size:38px;
+    color:#FFF;
+    font-weight:bold;
+    margin-top:30px;
+}
+.form-signin .checkbox {
+  margin-bottom: 10px;
+}
+.form-signin .checkbox {
+  font-weight: normal;
+}
+.form-signin .form-control {
+  position: relative;
+  width:36%!important;
+  margin:0 auto;
+  height: auto;
+  -webkit-box-sizing: border-box;
+     -moz-box-sizing: border-box;
+          box-sizing: border-box;
+  padding: 10px;
+  font-size: 16px;
+}
+.form-wrap {
+    margin-bottom:12px;
+}
+.form-control {
+    width:36%!important;
+    margin:0 auto;
+    padding:6px 20px!important;
+    font-size:14px!important;
+    border-radius:6px;
+    margin-bottom:12px;
+}
+.form-signin .form-control:focus {
+  z-index: 2;
+}
+.form-signin input[type="email"] {
+  margin-bottom: -1px;
+  border-bottom-right-radius: 0;
+  border-bottom-left-radius: 0;
+}
+.form-signin input[type="password"] {
+  margin-bottom: 10px;
+  border-top-left-radius: 0;
+  border-top-right-radius: 0;
+}
+      .drag{
+            width: 36%;
+            height: 40px;
+            line-height: 40px;
+            background-color: #e8e8e8;
+            position: relative;
+            margin:20px auto 0;
+        }
+        .bg{
+            width:40px;
+            height: 100%;
+            position: absolute;
+            background-color: #75CDF9;
+        }
+        .text{
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            text-align: center;
+            user-select: none;
+        }
+        .btn-wrapper{
+            margin-top:18px;
+        }
+        .btn-block{
+            width:36%!important;
+            margin:40px auto 10px;
+        }
+        .drag-btn{
+            width:40px;
+            height: 38px;
+            position: absolute;
+            border:1px solid #ccc;
+            cursor: move;
+            font-family: "宋体";
+            text-align: center;
+            background-color: #fff;
+            user-select: none;
+            color:#666;
+        }
+
+.login-copyright {
+    position:absolute;
+    left:44%;
+    bottom:30px;
+    font-size:12px;
+    color:#033887;
+}

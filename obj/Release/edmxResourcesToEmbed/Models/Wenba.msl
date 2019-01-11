@@ -1,0 +1,318 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+  <EntityContainerMapping StorageEntityContainer="WenbaDBModelStoreContainer" CdmEntityContainer="WenbaDBContext">
+    <EntitySetMapping Name="Collections">
+      <EntityTypeMapping TypeName="WenbaDBModel.Collection">
+        <MappingFragment StoreEntitySet="Collections">
+          <ScalarProperty Name="id" ColumnName="id" />
+          <ScalarProperty Name="UserId" ColumnName="UserId" />
+          <ScalarProperty Name="NoteId" ColumnName="NoteId" />
+          <ScalarProperty Name="CommentId" ColumnName="CommentId" />
+          <ScalarProperty Name="CreationDate" ColumnName="CreationDate" />
+          <ScalarProperty Name="CreatedBy" ColumnName="CreatedBy" />
+          <ScalarProperty Name="LastUpdateDate" ColumnName="LastUpdateDate" />
+          <ScalarProperty Name="LastUpdatedBy" ColumnName="LastUpdatedBy" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Comments">
+      <EntityTypeMapping TypeName="WenbaDBModel.Comment">
+        <MappingFragment StoreEntitySet="Comments">
+          <ScalarProperty Name="id" ColumnName="id" />
+          <ScalarProperty Name="NoteId" ColumnName="NoteId" />
+          <ScalarProperty Name="Comments" ColumnName="Comments" />
+          <ScalarProperty Name="LikeCount" ColumnName="LikeCount" />
+          <ScalarProperty Name="PublicFlag" ColumnName="PublicFlag" />
+          <ScalarProperty Name="CommentedBy" ColumnName="CommentedBy" />
+          <ScalarProperty Name="CommentedType" ColumnName="CommentedType" />
+          <ScalarProperty Name="Attribute1" ColumnName="Attribute1" />
+          <ScalarProperty Name="Attribute2" ColumnName="Attribute2" />
+          <ScalarProperty Name="Attribute3" ColumnName="Attribute3" />
+          <ScalarProperty Name="Attribute4" ColumnName="Attribute4" />
+          <ScalarProperty Name="Attribute5" ColumnName="Attribute5" />
+          <ScalarProperty Name="Attribute6" ColumnName="Attribute6" />
+          <ScalarProperty Name="Attribute7" ColumnName="Attribute7" />
+          <ScalarProperty Name="Attribute8" ColumnName="Attribute8" />
+          <ScalarProperty Name="Attribute9" ColumnName="Attribute9" />
+          <ScalarProperty Name="Attribute10" ColumnName="Attribute10" />
+          <ScalarProperty Name="CreatedBy" ColumnName="CreatedBy" />
+          <ScalarProperty Name="CreationDate" ColumnName="CreationDate" />
+          <ScalarProperty Name="LastUpdateDate" ColumnName="LastUpdateDate" />
+          <ScalarProperty Name="LastUpdatedBy" ColumnName="LastUpdatedBy" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Labels">
+      <EntityTypeMapping TypeName="WenbaDBModel.Label">
+        <MappingFragment StoreEntitySet="Labels">
+          <ScalarProperty Name="id" ColumnName="id" />
+          <ScalarProperty Name="LabelType" ColumnName="LabelType" />
+          <ScalarProperty Name="Label1" ColumnName="Label" />
+          <ScalarProperty Name="Attribute1" ColumnName="Attribute1" />
+          <ScalarProperty Name="Attribute2" ColumnName="Attribute2" />
+          <ScalarProperty Name="Attribute3" ColumnName="Attribute3" />
+          <ScalarProperty Name="Attribute4" ColumnName="Attribute4" />
+          <ScalarProperty Name="Attribute5" ColumnName="Attribute5" />
+          <ScalarProperty Name="Attribute6" ColumnName="Attribute6" />
+          <ScalarProperty Name="Attribute7" ColumnName="Attribute7" />
+          <ScalarProperty Name="Attribute8" ColumnName="Attribute8" />
+          <ScalarProperty Name="Attribute9" ColumnName="Attribute9" />
+          <ScalarProperty Name="Attribute10" ColumnName="Attribute10" />
+          <ScalarProperty Name="CreatedBy" ColumnName="CreatedBy" />
+          <ScalarProperty Name="CreationDate" ColumnName="CreationDate" />
+          <ScalarProperty Name="LastUpdateDate" ColumnName="LastUpdateDate" />
+          <ScalarProperty Name="LastUpdatedBy" ColumnName="LastUpdatedBy" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Managers">
+      <EntityTypeMapping TypeName="WenbaDBModel.Manager">
+        <MappingFragment StoreEntitySet="Managers">
+          <ScalarProperty Name="id" ColumnName="id" />
+          <ScalarProperty Name="ManagerName" ColumnName="ManagerName" />
+          <ScalarProperty Name="ManagerNum" ColumnName="ManagerNum" />
+          <ScalarProperty Name="Gender" ColumnName="Gender" />
+          <ScalarProperty Name="Birthday" ColumnName="Birthday" />
+          <ScalarProperty Name="HireDate" ColumnName="HireDate" />
+          <ScalarProperty Name="ActiveFlag" ColumnName="ActiveFlag" />
+          <ScalarProperty Name="Mobile" ColumnName="Mobile" />
+          <ScalarProperty Name="OpenId" ColumnName="OpenId" />
+          <ScalarProperty Name="ManagerType" ColumnName="ManagerType" />
+          <ScalarProperty Name="HeadImage" ColumnName="HeadImage" />
+          <ScalarProperty Name="Comments" ColumnName="Comments" />
+          <ScalarProperty Name="Attribute1" ColumnName="Attribute1" />
+          <ScalarProperty Name="Attribute2" ColumnName="Attribute2" />
+          <ScalarProperty Name="Attribute3" ColumnName="Attribute3" />
+          <ScalarProperty Name="Attribute4" ColumnName="Attribute4" />
+          <ScalarProperty Name="Attribute5" ColumnName="Attribute5" />
+          <ScalarProperty Name="Attribute6" ColumnName="Attribute6" />
+          <ScalarProperty Name="Attribute7" ColumnName="Attribute7" />
+          <ScalarProperty Name="Attribute8" ColumnName="Attribute8" />
+          <ScalarProperty Name="Attribute9" ColumnName="Attribute9" />
+          <ScalarProperty Name="Attribute10" ColumnName="Attribute10" />
+          <ScalarProperty Name="CreatedBy" ColumnName="CreatedBy" />
+          <ScalarProperty Name="CreationDate" ColumnName="CreationDate" />
+          <ScalarProperty Name="LastUpdatedBy" ColumnName="LastUpdatedBy" />
+          <ScalarProperty Name="LastUpdateDate" ColumnName="LastUpdateDate" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Notes">
+      <EntityTypeMapping TypeName="WenbaDBModel.Note">
+        <MappingFragment StoreEntitySet="Notes">
+          <ScalarProperty Name="id" ColumnName="id" />
+          <ScalarProperty Name="UserId" ColumnName="UserId" />
+          <ScalarProperty Name="CourseId" ColumnName="CourseId" />
+          <ScalarProperty Name="LikeNum" ColumnName="LikeNum" />
+          <ScalarProperty Name="QuestionId" ColumnName="QuestionId" />
+          <ScalarProperty Name="Notes" ColumnName="Notes" />
+          <ScalarProperty Name="PublicFlag" ColumnName="PublicFlag" />
+          <ScalarProperty Name="Attribute1" ColumnName="Attribute1" />
+          <ScalarProperty Name="Attribute2" ColumnName="Attribute2" />
+          <ScalarProperty Name="Attribute3" ColumnName="Attribute3" />
+          <ScalarProperty Name="Attribute4" ColumnName="Attribute4" />
+          <ScalarProperty Name="Attribute5" ColumnName="Attribute5" />
+          <ScalarProperty Name="Attribute6" ColumnName="Attribute6" />
+          <ScalarProperty Name="Attribute7" ColumnName="Attribute7" />
+          <ScalarProperty Name="Attribute8" ColumnName="Attribute8" />
+          <ScalarProperty Name="Attribute9" ColumnName="Attribute9" />
+          <ScalarProperty Name="Attribute10" ColumnName="Attribute10" />
+          <ScalarProperty Name="CreatedBy" ColumnName="CreatedBy" />
+          <ScalarProperty Name="CreationDate" ColumnName="CreationDate" />
+          <ScalarProperty Name="LastUpdateDate" ColumnName="LastUpdateDate" />
+          <ScalarProperty Name="LastUpdatedBy" ColumnName="LastUpdatedBy" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Projects">
+      <EntityTypeMapping TypeName="WenbaDBModel.Project">
+        <MappingFragment StoreEntitySet="Projects">
+          <ScalarProperty Name="CustManagerId" ColumnName="CustManagerId" />
+          <ScalarProperty Name="id" ColumnName="id" />
+          <ScalarProperty Name="ProjectName" ColumnName="ProjectName" />
+          <ScalarProperty Name="ProjectNum" ColumnName="ProjectNum" />
+          <ScalarProperty Name="StartDate" ColumnName="StartDate" />
+          <ScalarProperty Name="CustomerName" ColumnName="CustomerName" />
+          <ScalarProperty Name="EndDate" ColumnName="EndDate" />
+          <ScalarProperty Name="ManagerId" ColumnName="ManagerId" />
+          <ScalarProperty Name="QRCode" ColumnName="QRCode" />
+          <ScalarProperty Name="Status" ColumnName="Status" />
+          <ScalarProperty Name="Comments" ColumnName="Comments" />
+          <ScalarProperty Name="Attribute1" ColumnName="Attribute1" />
+          <ScalarProperty Name="Attribute2" ColumnName="Attribute2" />
+          <ScalarProperty Name="Attribute3" ColumnName="Attribute3" />
+          <ScalarProperty Name="Attribute4" ColumnName="Attribute4" />
+          <ScalarProperty Name="Attribute5" ColumnName="Attribute5" />
+          <ScalarProperty Name="Attribute6" ColumnName="Attribute6" />
+          <ScalarProperty Name="Attribute7" ColumnName="Attribute7" />
+          <ScalarProperty Name="Attribute8" ColumnName="Attribute8" />
+          <ScalarProperty Name="Attribute9" ColumnName="Attribute9" />
+          <ScalarProperty Name="Attribute10" ColumnName="Attribute10" />
+          <ScalarProperty Name="CreatedBy" ColumnName="CreatedBy" />
+          <ScalarProperty Name="CreationDate" ColumnName="CreationDate" />
+          <ScalarProperty Name="LastUpdatedBy" ColumnName="LastUpdatedBy" />
+          <ScalarProperty Name="LastUpdateDate" ColumnName="LastUpdateDate" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Questions">
+      <EntityTypeMapping TypeName="WenbaDBModel.Question">
+        <MappingFragment StoreEntitySet="Questions">
+          <ScalarProperty Name="Status" ColumnName="Status" />
+          <ScalarProperty Name="id" ColumnName="id" />
+          <ScalarProperty Name="QuestionTitle" ColumnName="QuestionTitle" />
+          <ScalarProperty Name="QuestionDesc" ColumnName="QuestionDesc" />
+          <ScalarProperty Name="QuestionType" ColumnName="QuestionType" />
+          <ScalarProperty Name="QuestionNum" ColumnName="QuestionNum" />
+          <ScalarProperty Name="CourseId" ColumnName="CourseId" />
+          <ScalarProperty Name="Comments" ColumnName="Comments" />
+          <ScalarProperty Name="CreatedBy" ColumnName="CreatedBy" />
+          <ScalarProperty Name="CreationDate" ColumnName="CreationDate" />
+          <ScalarProperty Name="LastUpdateDate" ColumnName="LastUpdateDate" />
+          <ScalarProperty Name="LastUpdatedBy" ColumnName="LastUpdatedBy" />
+          <ScalarProperty Name="Attribute1" ColumnName="Attribute1" />
+          <ScalarProperty Name="Attribute2" ColumnName="Attribute2" />
+          <ScalarProperty Name="Attribute3" ColumnName="Attribute3" />
+          <ScalarProperty Name="Attribute4" ColumnName="Attribute4" />
+          <ScalarProperty Name="Attribute5" ColumnName="Attribute5" />
+          <ScalarProperty Name="Attribute6" ColumnName="Attribute6" />
+          <ScalarProperty Name="Attribute7" ColumnName="Attribute7" />
+          <ScalarProperty Name="Attribute8" ColumnName="Attribute8" />
+          <ScalarProperty Name="Attribute9" ColumnName="Attribute9" />
+          <ScalarProperty Name="Attribute10" ColumnName="Attribute10" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="StudentAssgins">
+      <EntityTypeMapping TypeName="WenbaDBModel.StudentAssgin">
+        <MappingFragment StoreEntitySet="StudentAssgins">
+          <ScalarProperty Name="id" ColumnName="id" />
+          <ScalarProperty Name="StudentId" ColumnName="StudentId" />
+          <ScalarProperty Name="ActiveFlag" ColumnName="ActiveFlag" />
+          <ScalarProperty Name="ProjectId" ColumnName="ProjectId" />
+          <ScalarProperty Name="Attribute1" ColumnName="Attribute1" />
+          <ScalarProperty Name="Attribute2" ColumnName="Attribute2" />
+          <ScalarProperty Name="Attribute3" ColumnName="Attribute3" />
+          <ScalarProperty Name="Attribute4" ColumnName="Attribute4" />
+          <ScalarProperty Name="Attribute5" ColumnName="Attribute5" />
+          <ScalarProperty Name="Attribute6" ColumnName="Attribute6" />
+          <ScalarProperty Name="Attribute7" ColumnName="Attribute7" />
+          <ScalarProperty Name="Attribute8" ColumnName="Attribute8" />
+          <ScalarProperty Name="Attribute9" ColumnName="Attribute9" />
+          <ScalarProperty Name="Attribute10" ColumnName="Attribute10" />
+          <ScalarProperty Name="CreatedBy" ColumnName="CreatedBy" />
+          <ScalarProperty Name="CreationDate" ColumnName="CreationDate" />
+          <ScalarProperty Name="LastUpdateDate" ColumnName="LastUpdateDate" />
+          <ScalarProperty Name="LastUpdatedBy" ColumnName="LastUpdatedBy" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Students">
+      <EntityTypeMapping TypeName="WenbaDBModel.Student">
+        <MappingFragment StoreEntitySet="Students">
+          <ScalarProperty Name="id" ColumnName="id" />
+          <ScalarProperty Name="StudentName" ColumnName="StudentName" />
+          <ScalarProperty Name="StudentNum" ColumnName="StudentNum" />
+          <ScalarProperty Name="Gender" ColumnName="Gender" />
+          <ScalarProperty Name="Birthday" ColumnName="Birthday" />
+          <ScalarProperty Name="Collegue" ColumnName="Collegue" />
+          <ScalarProperty Name="Nationality" ColumnName="Nationality" />
+          <ScalarProperty Name="ActiveFlag" ColumnName="ActiveFlag" />
+          <ScalarProperty Name="HeadImage" ColumnName="HeadImage" />
+          <ScalarProperty Name="Mobile" ColumnName="Mobile" />
+          <ScalarProperty Name="OpenId" ColumnName="OpenId" />
+          <ScalarProperty Name="Comments" ColumnName="Comments" />
+          <ScalarProperty Name="Attribute1" ColumnName="Attribute1" />
+          <ScalarProperty Name="Attribute2" ColumnName="Attribute2" />
+          <ScalarProperty Name="Attribute3" ColumnName="Attribute3" />
+          <ScalarProperty Name="Attribute4" ColumnName="Attribute4" />
+          <ScalarProperty Name="Attribute5" ColumnName="Attribute5" />
+          <ScalarProperty Name="Attribute6" ColumnName="Attribute6" />
+          <ScalarProperty Name="Attribute7" ColumnName="Attribute7" />
+          <ScalarProperty Name="Attribute8" ColumnName="Attribute8" />
+          <ScalarProperty Name="Attribute9" ColumnName="Attribute9" />
+          <ScalarProperty Name="Attribute10" ColumnName="Attribute10" />
+          <ScalarProperty Name="CreatedBy" ColumnName="CreatedBy" />
+          <ScalarProperty Name="CreationDate" ColumnName="CreationDate" />
+          <ScalarProperty Name="LastUpdatedBy" ColumnName="LastUpdatedBy" />
+          <ScalarProperty Name="LastUpdateDate" ColumnName="LastUpdateDate" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Users">
+      <EntityTypeMapping TypeName="WenbaDBModel.User">
+        <MappingFragment StoreEntitySet="Users">
+          <ScalarProperty Name="id" ColumnName="id" />
+          <ScalarProperty Name="UserName" ColumnName="UserName" />
+          <ScalarProperty Name="Comments" ColumnName="Comments" />
+          <ScalarProperty Name="Password" ColumnName="Password" />
+          <ScalarProperty Name="StartDate" ColumnName="StartDate" />
+          <ScalarProperty Name="EndDate" ColumnName="EndDate" />
+          <ScalarProperty Name="Role" ColumnName="Role" />
+          <ScalarProperty Name="PersonId" ColumnName="PersonId" />
+          <ScalarProperty Name="CreatedBy" ColumnName="CreatedBy" />
+          <ScalarProperty Name="CreationDate" ColumnName="CreationDate" />
+          <ScalarProperty Name="LastUpdateDate" ColumnName="LastUpdateDate" />
+          <ScalarProperty Name="LastUpdatedBy" ColumnName="LastUpdatedBy" />
+          <ScalarProperty Name="Attribute1" ColumnName="Attribute1" />
+          <ScalarProperty Name="Attribute2" ColumnName="Attribute2" />
+          <ScalarProperty Name="Attribute3" ColumnName="Attribute3" />
+          <ScalarProperty Name="Attribute4" ColumnName="Attribute4" />
+          <ScalarProperty Name="Attribute5" ColumnName="Attribute5" />
+          <ScalarProperty Name="Attribute6" ColumnName="Attribute6" />
+          <ScalarProperty Name="Attribute7" ColumnName="Attribute7" />
+          <ScalarProperty Name="Attribute8" ColumnName="Attribute8" />
+          <ScalarProperty Name="Attribute9" ColumnName="Attribute9" />
+          <ScalarProperty Name="Attribute10" ColumnName="Attribute10" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Courses">
+      <EntityTypeMapping TypeName="IsTypeOf(WenbaDBModel.Course)">
+        <MappingFragment StoreEntitySet="Courses">
+          <ScalarProperty Name="LastUpdatedate" ColumnName="LastUpdatedate" />
+          <ScalarProperty Name="LastUpdatedBy" ColumnName="LastUpdatedBy" />
+          <ScalarProperty Name="CreationDate" ColumnName="CreationDate" />
+          <ScalarProperty Name="CreatedBy" ColumnName="CreatedBy" />
+          <ScalarProperty Name="Attribute10" ColumnName="Attribute10" />
+          <ScalarProperty Name="Attribute9" ColumnName="Attribute9" />
+          <ScalarProperty Name="Attribute8" ColumnName="Attribute8" />
+          <ScalarProperty Name="Attribute7" ColumnName="Attribute7" />
+          <ScalarProperty Name="Attribute6" ColumnName="Attribute6" />
+          <ScalarProperty Name="Attribute5" ColumnName="Attribute5" />
+          <ScalarProperty Name="Attribute4" ColumnName="Attribute4" />
+          <ScalarProperty Name="Attribute3" ColumnName="Attribute3" />
+          <ScalarProperty Name="Attribute2" ColumnName="Attribute2" />
+          <ScalarProperty Name="Attribute1" ColumnName="Attribute1" />
+          <ScalarProperty Name="Comments" ColumnName="Comments" />
+          <ScalarProperty Name="Site" ColumnName="Site" />
+          <ScalarProperty Name="Status" ColumnName="Status" />
+          <ScalarProperty Name="StartDate" ColumnName="StartDate" />
+          <ScalarProperty Name="EndDate" ColumnName="EndDate" />
+          <ScalarProperty Name="TeacherId" ColumnName="TeacherId" />
+          <ScalarProperty Name="ActiveFlag" ColumnName="ActiveFlag" />
+          <ScalarProperty Name="CourseDesc" ColumnName="CourseDesc" />
+          <ScalarProperty Name="CourseNum" ColumnName="CourseNum" />
+          <ScalarProperty Name="CourseName" ColumnName="CourseName" />
+          <ScalarProperty Name="ProjectId" ColumnName="ProjectId" />
+          <ScalarProperty Name="id" ColumnName="id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Dictionaries">
+      <EntityTypeMapping TypeName="IsTypeOf(WenbaDBModel.Dictionary)">
+        <MappingFragment StoreEntitySet="Dictionaries">
+          <ScalarProperty Name="VALUE" ColumnName="VALUE" />
+          <ScalarProperty Name="CODE" ColumnName="CODE" />
+          <ScalarProperty Name="TYPE" ColumnName="TYPE" />
+          <ScalarProperty Name="LastUpdatedBy" ColumnName="LastUpdatedBy" />
+          <ScalarProperty Name="LastUpdateDate" ColumnName="LastUpdateDate" />
+          <ScalarProperty Name="CreationDate" ColumnName="CreationDate" />
+          <ScalarProperty Name="CreatedBy" ColumnName="CreatedBy" />
+          <ScalarProperty Name="Enabled" ColumnName="Enabled" />
+          <ScalarProperty Name="id" ColumnName="id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+  </EntityContainerMapping>
+</Mapping>

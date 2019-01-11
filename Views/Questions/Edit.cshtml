@@ -1,0 +1,84 @@
+﻿@model Wenba.Models.Question
+
+@{
+    ViewBag.Title = "Edit";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>编辑</h2>
+
+
+@using (Html.BeginForm())
+{
+    @Html.AntiForgeryToken()
+
+    <div class="form-horizontal layui-form">
+        <h4>Question</h4>
+        <hr />
+        @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+        @Html.HiddenFor(model => model.id)
+
+
+
+        <div class="form-group">
+            内容
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.QuestionDesc, new { htmlAttributes = new { @class = "form-control layui-input" } })
+                @Html.ValidationMessageFor(model => model.QuestionDesc, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+
+
+        <div class="form-group">
+            编号
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.QuestionNum, new { htmlAttributes = new { @class = "form-control layui-input" } })
+                @Html.ValidationMessageFor(model => model.QuestionNum, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+
+        <div class="form-group">
+            备注
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.Comments, new { htmlAttributes = new { @class = "form-control layui-input" } })
+                @Html.ValidationMessageFor(model => model.Comments, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+
+
+        @*<div class="form-group">
+            最近更新时间
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.LastUpdateDate, new { htmlAttributes = new { @class = "form-control layui-input" } })
+                @Html.ValidationMessageFor(model => model.LastUpdateDate, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <div class="form-group">
+            最近更新人
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.LastUpdatedBy, new { htmlAttributes = new { @class = "form-control layui-input" } })
+                @Html.ValidationMessageFor(model => model.LastUpdatedBy, "", new { @class = "text-danger" })
+            </div>
+        </div>*@
+
+
+        <div class="form-group">
+            <div class="col-md-offset-2 col-md-10">
+                <input type="submit" value="提交" class="layui-btn layui-btn-normal" />
+            </div>
+        </div>
+        
+    </div>
+}
+
+<div>
+    @Html.ActionLink("返回列表", "Index")
+</div>
+
+<script src="~/Scripts/jquery-1.10.2.min.js"></script>
+<script src="~/Scripts/jquery.validate.min.js"></script>
+<script src="~/Scripts/jquery.validate.unobtrusive.min.js"></script>

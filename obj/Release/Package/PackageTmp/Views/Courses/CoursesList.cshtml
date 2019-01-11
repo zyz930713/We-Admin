@@ -1,0 +1,169 @@
+﻿
+@model IPagedList<Wenba.ViewModels.CompositeCourse>
+@using PagedList.Mvc;
+@using PagedList;
+
+@{
+    ViewBag.Title = "CoursesList";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+    int rownum = 1;
+    if (Model.IsFirstPage)
+    {
+        rownum = 1;
+    }
+    else
+    {
+        rownum = Model.PageSize * (Model.PageNumber - 1) + 1;
+    }
+
+    var coursename = ViewData["coursename"];
+    var TeacherId = ViewData["TeacherId"];
+    var ProjectId = ViewData["ProjectId"];
+    var site = ViewData["site"];
+
+}
+<link href="~/Content/PagedList.css" rel="stylesheet" />
+<div class="item-module">
+    
+    <div class="item-title">
+        <img src="~/Content/images/icon_project2.png" />
+        <span>课程管理</span>
+    </div>
+    <div class="User-manager-form layui-col-md11">
+        <form class="layui-form" action="~/Courses/CoursesList" method="post" name="form1" id="form1">
+            <div class="layui-form-item inline-show">
+                <label class="layui-form-label">课程名称</label>
+                <div class="layui-input-block">
+                    <input type="text" name="coursename" autocomplete="off" class="layui-input" value="@coursename">
+                </div>
+            </div>
+            <div class="layui-form-item inline-show item-filter">
+                <label class="layui-form-label">任课老师</label>
+                <div class="layui-input-block">
+                    @*<input type="text" name="title" required lay-verify="required" placeholder="" autocomplete="off" class="layui-input">*@
+                    @Html.DropDownList("TeacherId", ViewData["TeacherList"] as List<SelectListItem>, "所有老师")
+                </div>
+            </div>
+            <div class="layui-form-item inline-show item-filter">
+                <label class="layui-form-label">项目名称</label>
+                <div class="layui-input-block">
+                    @*<input type="text" name="title" required lay-verify="required" placeholder="" autocomplete="off" class="layui-input">*@
+                    @Html.DropDownList("ProjectId", ViewData["ProjectList"] as List<SelectListItem>, "所有项目")
+                </div>
+            </div>
+            <div class="layui-form-item inline-show item-filter">
+                <label class="layui-form-label">上课地点</label>
+                <div class="layui-input-block">
+                    <input type="text" name="site" autocomplete="off" class="layui-input" value="@site">
+                </div>
+            </div>
+            <div class="layui-form-item inline-show item-filter">
+                <div class="layui-input-block">
+                    <input class="layui-btn" lay-submit lay-filter="formDemo" type="submit" value="搜索" />
+                </div>
+            </div>
+        </form>
+    </div>
+
+
+    <div>
+        <table class="table-hover gridtable">
+            <tr>
+                <th>
+                    序号
+                </th>
+                <th>
+                    课程编号
+                </th>
+                <th>
+                    项目名称
+                </th>
+                <th>
+                    课程名称
+                </th>
+
+                <th>
+                    任课讲师
+                </th>
+                <th>
+                    开始时间
+                </th>
+                <th>
+                    结束时间
+                </th>
+                <th>
+                    状态
+                </th>
+                <th>
+                    上课地点
+                </th>
+                <th>
+                    操作
+                </th>
+            </tr>
+
+            @foreach (var item in Model)
+            {
+                <tr>
+                    <td>@rownum.ToString("00")</td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Course.CourseNum)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Project.ProjectName)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Course.CourseName)
+                    </td>
+
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Teacher.ManagerName)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Course.StartDate)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Course.EndDate)
+                    </td>
+
+                    <td>
+                        @if (item.Course.Status == "N         ")
+                {
+                            @("未开课")
+                        }
+                        @if (item.Course.Status == "S         ")
+                {
+                            @("已开课")
+                        }
+                        @if (item.Course.Status == "C         ")
+                {
+                            @("已结课")
+                        }
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Course.Site)
+                    </td>
+
+                    <td>
+                        @Html.ActionLink("编辑", "Edit", new { id = item.Course.id }) |
+                        @Html.ActionLink("详情", "Details", new { id = item.Course.id }) |
+                        @Html.ActionLink("删除", "Delete", new { id = item.Course.id })
+                    </td>
+                </tr>
+                rownum++;
+            }
+
+        </table>
+    </div>
+
+    <div class="layui-form-item inline-show">
+        <div class="layui-btn layui-btn-normal">@Html.ActionLink("添加", "Create")</div>
+    </div>
+
+    <div class="shared-pageList">
+        每页 @Model.PageSize 条记录，共 @Model.PageCount 页，当前第 @Model.PageNumber 页
+        @Html.PagedListPager(Model, page => Url.Action("CoursesList", new { page, coursename, TeacherId, ProjectId, site }))
+    </div>
+</div>
+
+    

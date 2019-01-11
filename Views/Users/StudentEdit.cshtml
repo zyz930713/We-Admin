@@ -1,0 +1,114 @@
+﻿@model Wenba.Controllers.UsersController.Studentlist
+@{
+    ViewBag.Title = "StudentEdit";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+<!DOCTYPE html>
+<script src="~/Scripts/jquery-1.10.2.js"></script>
+<script src="~/Scripts/jquery-1.10.2.min.js"></script>
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title></title>
+</head>
+
+<body class="shared-edit">
+    @using (Html.BeginForm("StudentSave", "Users", FormMethod.Post, new { enctype = "multipart/form-data" }))
+    {
+        @*<form action="/Users/UserSave" method="post" class="form-horizontal" role="form" name="form1" enctype="multipart/form-data">*@
+        <table class="layui-form">
+            <tr hidden>
+                <td><input id="Text1" name="StudentId" type="text" value="@Html.DisplayFor(model=>model.StudentId)" hidden /></td>
+                <td></td>
+            </tr>
+            <tr>
+                <th>用户头像</th>
+                <td>
+                    <form action="" enctype="multipart/form-data">
+                        <img src="@Html.DisplayFor(model=>model.HeadImage)" id="show" width="200" name="headimage"><br />
+                        <input id="file" class="filepath" onchange="changepic(this)" type="file" name="file">
+                    </form>
+                </td>
+            </tr>
+            <tr>
+                <th>用户姓名</th>
+                <td><input id="Text1" class="layui-input" name="StudentName" type="text" value="@Html.DisplayFor(model=>model.StudentName)" /></td>
+            </tr>
+            <tr>
+                <th>学生编号</th>
+                <td><input id="Text1" class="layui-input" name="StudentNum" type="text" value="@Html.DisplayFor(model=>model.StudentNum)" /></td>
+            </tr>
+            <tr>
+                <th>用户密码</th>
+                <td><input id="Text1" class="layui-input" name="Password" type="text" value="@Html.DisplayFor(model=>model.Password)" /></td>
+            </tr>
+            <tr>
+                <th>用户性别</th>
+                <td>
+                    @Html.RadioButtonFor(model => model.Gender, "0", new { @class = "radioStyle", @name = "Gender" })男
+                    @Html.RadioButtonFor(model => model.Gender, "1", new { @class = "radioStyle", @name = "Gender" })女
+                </td>
+            </tr>
+            <tr>
+                <th>手机号码</th>
+                <td><input id="Text1" class="layui-input" name="Mobile" type="text" value="@Html.DisplayFor(model=>model.Mobile)" /></td>
+            </tr>
+            <tr>
+                <th>出生日期</th>
+                <td>
+                    @Html.TextBox("Birthday", ViewData["Birthday"],new { @type="text", @class = "layui-input" })
+              
+                </td>
+            </tr>
+            <tr>
+                <th>毕业学校</th>
+                <td><input id="Text1" class="layui-input" name="Collegue" type="text" value="@Html.DisplayFor(model=>model.Collegue)" /></td>
+            </tr>
+            <tr>
+                <th>所属国籍</th>
+                <td><input id="Text1" class="layui-input" name="Nationality" type="text" value="@Html.DisplayFor(model=>model.Nationality)" /></td>
+            </tr>
+            <tr>
+                <th>项目名称</th>
+                <td>@Html.DropDownList("ProjectId", ViewData["ProjectList"] as List<SelectListItem>, ViewData["ProjectId"])
+                </td>
+            </tr>
+            <tr>
+                <th>备注</th>
+                <td>
+                    <input id="Text1" class="layui-input" name="Comments" type="text" value="@Html.DisplayFor(model=>model.Comments)" />
+                </td>
+            </tr>            <tr>
+                <th>添加时间</th>
+                <td>@Html.DisplayFor(model => model.StartDate)</td>
+            </tr>
+
+        </table>
+        <button type="submit" class="layui-btn layui-btn-normal">提交</button>
+        @Html.ActionLink("返回列表", "UsersList")
+        @*</form>*@
+    }
+</body>
+</html>
+
+<script>
+    function changepic(obj) {
+        //console.log(obj.files[0]);//这里可以获取上传文件的name
+        var newsrc=getObjectURL(obj.files[0]);
+        document.getElementById('show').src = newsrc;
+        document.getElementById("hiddenimg").value = newsrc;
+    }
+    //建立一個可存取到該file的url
+    function getObjectURL(file) {
+        var url = null ;
+        // 下面函数执行的效果是一样的，只是需要针对不同的浏览器执行不同的 js 函数而已
+        if (window.createObjectURL!=undefined) { // basic
+            url = window.createObjectURL(file) ;
+        } else if (window.URL!=undefined) { // mozilla(firefox)
+            url = window.URL.createObjectURL(file) ;
+        } else if (window.webkitURL!=undefined) { // webkit or chrome
+            url = window.webkitURL.createObjectURL(file) ;
+        }
+        return url ;
+    }
+</script>
